@@ -8,8 +8,6 @@ So for recording my growth, for writing less codes, for better tomorrow......
 
 I should create this repository to summary some UI(cocoa Touch) extensions that are likely to be used in our work. 
 
-<i><b>To be continue...</b></i>
-
 # Usage
 
 ## UIButtom + ImageAlignment
@@ -27,3 +25,4 @@ Effect just like this:
 ![right margin image](https://github.com/ZeroOnet/UIExtensions/blob/master/UIExtensions/Display/rightMargin.png)
 ![top image](https://github.com/ZeroOnet/UIExtensions/blob/master/UIExtensions/Display/top.png)
 
+<i><b>To be continue...</b></i>
