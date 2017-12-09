@@ -22,8 +22,8 @@ button.setImage(image, imageAlignment: .top, spacing: 0, state: .normal)
 
 Effect just like this:
 
-[!image](https://github.com/ZeroOnet/UIExtensions/blob/master/UIExtensions/Display/bottom.png)
-[!image](https://github.com/ZeroOnet/UIExtensions/blob/master/UIExtensions/Display/leftMargin.png)
-[!image](https://github.com/ZeroOnet/UIExtensions/blob/master/UIExtensions/Display/rightMargin.png)
-[!image](https://github.com/ZeroOnet/UIExtensions/blob/master/UIExtensions/Display/top.png)
+[image](https://github.com/ZeroOnet/UIExtensions/blob/master/UIExtensions/Display/bottom.png)
+[image](https://github.com/ZeroOnet/UIExtensions/blob/master/UIExtensions/Display/leftMargin.png)
+[image](https://github.com/ZeroOnet/UIExtensions/blob/master/UIExtensions/Display/rightMargin.png)
+[image](https://github.com/ZeroOnet/UIExtensions/blob/master/UIExtensions/Display/top.png)
 
