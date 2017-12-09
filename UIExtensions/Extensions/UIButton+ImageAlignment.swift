@@ -35,10 +35,7 @@ extension UIButton {
         // back to initial state
         self.imageEdgeInsets = UIEdgeInsets()
         self.titleEdgeInsets = UIEdgeInsets()
-        
-        self.titleLabel?.backgroundColor = UIColor.orange
-        self.imageView?.backgroundColor = UIColor.purple
-    
+            
         self.sizeToFit()
         
         let imageViewWidth = self.imageView?.zn_width ?? 0

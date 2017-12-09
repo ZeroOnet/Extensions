@@ -17,10 +17,10 @@ class ViewController: UIViewController {
         button.center = self.view.center
         button.backgroundColor = UIColor.lightGray
         
-        button.setTitle("试试看", for: .normal)
+        button.setTitle("try", for: .normal)
         
         let image = UIImage(named: "arrow")
-        button.setImage(image, imageAlignment: .top, spacing: 0, state: .normal)
+        button.setImage(image, imageAlignment: .right, spacing: 20, state: .normal)
         button.setWidth(150)
         button.setHeight(150)
         
