@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4F10E3B21FDBB1B000859D87 /* UIView+Frame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F10E3B11FDBB1B000859D87 /* UIView+Frame.swift */; };
+		4F10E3B41FDBBDAE00859D87 /* UIButton+ImageAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F10E3B31FDBBDAE00859D87 /* UIButton+ImageAlignment.swift */; };
 		4F77EC421FD822430047D9F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F77EC411FD822430047D9F1 /* AppDelegate.swift */; };
 		4F77EC441FD822430047D9F1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F77EC431FD822430047D9F1 /* ViewController.swift */; };
 		4F77EC471FD822430047D9F1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F77EC451FD822430047D9F1 /* Main.storyboard */; };
@@ -28,6 +29,7 @@
 
 /* Begin PBXFileReference section */
 		4F10E3B11FDBB1B000859D87 /* UIView+Frame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Frame.swift"; sourceTree = "<group>"; };
+		4F10E3B31FDBBDAE00859D87 /* UIButton+ImageAlignment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+ImageAlignment.swift"; sourceTree = "<group>"; };
 		4F77EC3E1FD822430047D9F1 /* UIExtensions.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UIExtensions.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F77EC411FD822430047D9F1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4F77EC431FD822430047D9F1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -62,6 +64,7 @@
 			isa = PBXGroup;
 			children = (
 				4F10E3B11FDBB1B000859D87 /* UIView+Frame.swift */,
+				4F10E3B31FDBBDAE00859D87 /* UIButton+ImageAlignment.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -213,6 +216,7 @@
 				4F77EC441FD822430047D9F1 /* ViewController.swift in Sources */,
 				4F77EC421FD822430047D9F1 /* AppDelegate.swift in Sources */,
 				4F10E3B21FDBB1B000859D87 /* UIView+Frame.swift in Sources */,
+				4F10E3B41FDBBDAE00859D87 /* UIButton+ImageAlignment.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
