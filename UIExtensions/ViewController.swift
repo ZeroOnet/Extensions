@@ -9,8 +9,22 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let button = UIButton()
+        button.center = self.view.center
+        button.backgroundColor = UIColor.lightGray
+        
+        button.setTitle("试试看", for: .normal)
+        
+        let image = UIImage(named: "arrow")
+        button.setImage(image, imageAlignment: .top, spacing: 0, state: .normal)
+        button.setWidth(150)
+        button.setHeight(150)
+        
+        self.view.addSubview(button)
     }
 }
 

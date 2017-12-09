@@ -18,11 +18,11 @@ extension UIView {
     }
     
     var zn_width: CGFloat {
-        return self.frame.width
+        return self.bounds.width
     }
     
     var zn_height: CGFloat {
-        return self.frame.height
+        return self.bounds.height
     }
     
     var zn_origin: CGPoint {
@@ -30,7 +30,7 @@ extension UIView {
     }
     
     var zn_size: CGSize {
-        return self.frame.size
+        return self.bounds.size
     }
     
     func setX(_ x: CGFloat) {
@@ -48,17 +48,17 @@ extension UIView {
     }
     
     func setWidth(_ width: CGFloat) {
-        var frame = self.frame
-        frame.size.width = width
+        var bounds = self.bounds
+        bounds.size.width = width
         
-        self.frame = frame
+        self.bounds = bounds
     }
     
     func setHeight(_ height: CGFloat) {
-        var frame = self.frame
-        frame.size.height = height
+        var bounds = self.bounds
+        bounds.size.height = height
         
-        self.frame = frame
+        self.bounds = bounds
     }
     
     func setOrigin(_ origin: CGPoint) {
@@ -69,9 +69,9 @@ extension UIView {
     }
     
     func setSize(_ size: CGSize) {
-        var frame = self.frame
-        frame.size = size
+        var bounds = self.bounds
+        bounds.size = size
         
-        self.frame = frame
+        self.bounds = bounds
     }
 }
