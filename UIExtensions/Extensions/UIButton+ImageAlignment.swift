@@ -55,18 +55,41 @@ extension UIButton {
         // no matter how big the button is, the imageView is close to titleLabel
         switch imageAlignment {
         case .top:
-            
-            imageEdgeInsets = UIEdgeInsets(top: -(imageViewHeight / 2.0 + moveSpacing), left: imageMargin, bottom: imageViewHeight / 2.0 + moveSpacing, right: -imageMargin)
-            titleEdgeInsets = UIEdgeInsets(top: titleLabelHeight / 2.0 + moveSpacing, left: -titleMargin, bottom: -(titleLabelHeight / 2.0 + moveSpacing), right: titleMargin)
+            imageEdgeInsets = UIEdgeInsets(top: -(imageViewHeight / 2.0 + moveSpacing),
+                                           left: imageMargin,
+                                           bottom: imageViewHeight / 2.0 + moveSpacing,
+                                           right: -imageMargin)
+            titleEdgeInsets = UIEdgeInsets(top: titleLabelHeight / 2.0 + moveSpacing,
+                                           left: -titleMargin,
+                                           bottom: -(titleLabelHeight / 2.0 + moveSpacing),
+                                           right: titleMargin)
         case .left:
-            imageEdgeInsets = UIEdgeInsets(top: 0, left: -moveSpacing, bottom: 0, right: moveSpacing)
-            titleEdgeInsets = UIEdgeInsets(top: 0, left: moveSpacing, bottom: 0, right: -moveSpacing)
+            imageEdgeInsets = UIEdgeInsets(top: 0,
+                                           left: -moveSpacing,
+                                           bottom: 0,
+                                           right: moveSpacing)
+            titleEdgeInsets = UIEdgeInsets(top: 0,
+                                           left: moveSpacing,
+                                           bottom: 0,
+                                           right: -moveSpacing)
         case .bottom:
-            imageEdgeInsets = UIEdgeInsets(top: imageViewHeight / 2.0 + moveSpacing, left: imageMargin, bottom: -(imageViewHeight / 2.0 + moveSpacing), right: -imageMargin)
-            titleEdgeInsets = UIEdgeInsets(top: -(titleLabelHeight / 2.0 + moveSpacing), left: -titleMargin, bottom: titleLabelHeight / 2.0 + moveSpacing, right: titleMargin)
+            imageEdgeInsets = UIEdgeInsets(top: imageViewHeight / 2.0 + moveSpacing,
+                                           left: imageMargin,
+                                           bottom: -(imageViewHeight / 2.0 + moveSpacing),
+                                           right: -imageMargin)
+            titleEdgeInsets = UIEdgeInsets(top: -(titleLabelHeight / 2.0 + moveSpacing),
+                                           left: -titleMargin,
+                                           bottom: titleLabelHeight / 2.0 + moveSpacing,
+                                           right: titleMargin)
         case .right:
-            imageEdgeInsets = UIEdgeInsets(top: 0, left: titleLabelWidth + moveSpacing, bottom: 0, right: -(titleLabelWidth + moveSpacing))
-            titleEdgeInsets = UIEdgeInsets(top: 0, left: -(imageViewWidth + moveSpacing), bottom: 0, right: imageViewWidth + moveSpacing)
+            imageEdgeInsets = UIEdgeInsets(top: 0,
+                                           left: titleLabelWidth + moveSpacing,
+                                           bottom: 0,
+                                           right: -(titleLabelWidth + moveSpacing))
+            titleEdgeInsets = UIEdgeInsets(top: 0,
+                                           left: -(imageViewWidth + moveSpacing),
+                                           bottom: 0,
+                                           right: imageViewWidth + moveSpacing)
         }
         
         self.imageEdgeInsets = imageEdgeInsets
