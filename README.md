@@ -33,7 +33,7 @@ A sample class func:
 QRImageView.image = UIImage.qrImage(content: "我(I) you 🤣", size: CGSize(width: 200, height: 200))
 ```
 
-The QR code image as follows:
+The QR code image as follows:<br></br>
 ![QR code image](https://github.com/ZeroOnet/UIExtensions/blob/master/UIExtensions/Display/QRCode.png)
 
 
