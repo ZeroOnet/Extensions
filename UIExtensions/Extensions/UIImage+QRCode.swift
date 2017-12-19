@@ -2,7 +2,7 @@
 //  UIImage+QRCode.swift
 //  UIExtensions
 //
-//  Created by 李文康 on 2017/12/19.
+//  Created by FunctionMaker on 2017/12/19.
 //  Copyright © 2017年 FunctionMaker. All rights reserved.
 //
 
