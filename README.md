@@ -25,4 +25,18 @@ Effect just like this:
 ![right margin image](https://github.com/ZeroOnet/UIExtensions/blob/master/UIExtensions/Display/rightMargin.png)
 ![top image](https://github.com/ZeroOnet/UIExtensions/blob/master/UIExtensions/Display/top.png)
 
+## UIImage + QRCodeImage
+
+A sample class func:
+
+```
+QRImageView.image = UIImage.qrImage(content: "我(I) you 🤣", size: CGSize(width: 200, height: 200))
+```
+
+The QR code image as follows:
+![QR code image](https://github.com/ZeroOnet/UIExtensions/blob/master/UIExtensions/Display/QRCode.png)
+
+
+
+
 <i><b>To be continue...</b></i>
