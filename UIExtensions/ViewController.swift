@@ -13,18 +13,13 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let button = UIButton()
-        button.center = self.view.center
-        button.backgroundColor = UIColor.lightGray
+        let QRImageView = UIImageView()
+        QRImageView.center = self.view.center
+        QRImageView.setWidth(200)
+        QRImageView.setHeight(200)
+        QRImageView.image = UIImage.qrImage(content: "我 you 🤣", size: CGSize(width: 200, height: 200))
         
-        button.setTitle("try", for: .normal)
-        
-        let image = UIImage(named: "arrow")
-        button.setImage(image, imageAlignment: .right, spacing: 20, state: .normal)
-        button.setWidth(150)
-        button.setHeight(150)
-        
-        self.view.addSubview(button)
+        self.view.addSubview(QRImageView)
     }
 }
 
