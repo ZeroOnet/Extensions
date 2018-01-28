@@ -1,6 +1,6 @@
 # Reasons
 
-Sometimes, We maybe build some views repeatedly. Because We think that they just will be used under a condition. It's the curse
+Sometimes, we maybe build some views repeatedly. Because we think that they just will be used under a condition. It's the curse
 of breaking the rule: <b>DRY</b>. In fact, If we are conscious of view's reusing, we will make more efforts to make it
 completely independent.
 
