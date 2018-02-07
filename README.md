@@ -1,6 +1,6 @@
 # Reasons
 
-Sometimes, We maybe build some views repeatedly. Because We think that they just will be used under a condition. It's the curse
+Sometimes, we maybe build some views repeatedly. Because we think that they just will be used under a condition. It's the curse
 of breaking the rule: <b>DRY</b>. In fact, If we are conscious of view's reusing, we will make more efforts to make it
 completely independent.
 
@@ -24,5 +24,19 @@ Effect just like this:
 ![left margin image](https://github.com/ZeroOnet/UIExtensions/blob/master/UIExtensions/Display/leftMargin.png)
 ![right margin image](https://github.com/ZeroOnet/UIExtensions/blob/master/UIExtensions/Display/rightMargin.png)
 ![top image](https://github.com/ZeroOnet/UIExtensions/blob/master/UIExtensions/Display/top.png)
+
+## UIImage + QRCodeImage
+
+A sample class func:
+
+```
+QRImageView.image = UIImage.qrImage(content: "我(I) you 🤣", size: CGSize(width: 200, height: 200))
+```
+
+The QR code image as follows:<br></br>
+![QR code image](https://github.com/ZeroOnet/UIExtensions/blob/master/UIExtensions/Display/QRCode.png)
+
+
+
 
 <i><b>To be continue...</b></i>
