@@ -36,7 +36,15 @@ QRImageView.image = UIImage.qrImage(content: "我(I) you 🤣", size: CGSize(wid
 The QR code image as follows:<br></br>
 ![QR code image](https://github.com/ZeroOnet/UIExtensions/blob/master/UIExtensions/Display/QRCode.png)
 
+## UIImageView + SaveImage
 
+In some cases, we need to save image to local. for example, user avatar, qr code......
 
+`UIImageWriteToSavedPhotosAlbum` can help us finish it simply. But there is a point should be noticed: get current context graphics image and then save. You can use it like this under this extension:
+
+```
+imageView.saveImage(finishedHandler: ((UIImage) -> Void)? = nil, failedHandler: ((Error) -> Void)? = nil)
+
+```
 
 <i><b>To be continue...</b></i>
