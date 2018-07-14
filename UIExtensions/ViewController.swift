@@ -10,11 +10,16 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    @IBOutlet weak var testImageView: UIImageView!
     @IBOutlet weak var testLabel: UILabel!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        testLabel.copyable()
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        testImageView.asMenuTrigger([MenuItem(title: "test", action: #selector(testAction))])
+    }
+    
+    @objc func testAction() {
+        debugPrint("test edit action occur")
     }
 }
 

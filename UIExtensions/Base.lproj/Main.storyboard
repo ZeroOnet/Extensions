@@ -17,21 +17,31 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap Me" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TSb-PG-Xkc">
-                                <rect key="frame" x="159.5" y="323" width="56" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap Me End To" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TSb-PG-Xkc">
+                                <rect key="frame" x="131.5" y="323" width="112.5" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="test.png" translatesAutoresizingMaskIntoConstraints="NO" id="Y7h-Su-Fjy">
+                                <rect key="frame" x="0.0" y="429" width="375" height="238"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="238" id="XiX-7N-as4"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="Y7h-Su-Fjy" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="BuE-XA-hJq"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Y7h-Su-Fjy" secondAttribute="bottom" id="NTp-6b-c9u"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Y7h-Su-Fjy" secondAttribute="trailing" id="UXK-gh-I1N"/>
                             <constraint firstItem="TSb-PG-Xkc" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="cbj-uS-Rlf"/>
                             <constraint firstItem="TSb-PG-Xkc" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="y2a-Nv-llo"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="testImageView" destination="Y7h-Su-Fjy" id="TO0-hC-nbb"/>
                         <outlet property="testLabel" destination="TSb-PG-Xkc" id="f0p-1a-xPP"/>
                     </connections>
                 </viewController>
@@ -40,4 +50,7 @@
             <point key="canvasLocation" x="32.799999999999997" y="33.733133433283363"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="test.png" width="388" height="400"/>
+    </resources>
 </document>

@@ -15,8 +15,11 @@
 		4F77EC491FD822430047D9F1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F77EC481FD822430047D9F1 /* Assets.xcassets */; };
 		4F77EC4C1FD822430047D9F1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F77EC4A1FD822430047D9F1 /* LaunchScreen.storyboard */; };
 		4F77EC571FD822430047D9F1 /* UIExtensionsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F77EC561FD822430047D9F1 /* UIExtensionsUITests.swift */; };
-		FA8A282020F4AEDB003300FC /* UILabel+Copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8A281F20F4AEDB003300FC /* UILabel+Copy.swift */; };
+		FA55D88920FA138600CBE24F /* UIImageView+Copyable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA55D88820FA138600CBE24F /* UIImageView+Copyable.swift */; };
+		FA8A282020F4AEDB003300FC /* UILabel+Copyable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8A281F20F4AEDB003300FC /* UILabel+Copyable.swift */; };
+		FA91506620F75C40003D33D2 /* MenuItemEnable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA91506520F75C40003D33D2 /* MenuItemEnable.swift */; };
 		FAB4A45E1FE90E26009B20C5 /* UIImage+QRCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB4A45D1FE90E26009B20C5 /* UIImage+QRCode.swift */; };
+		FAE6898C20F8DE3F0087FA1F /* UIView+MenuTrigger.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE6898B20F8DE3F0087FA1F /* UIView+MenuTrigger.swift */; };
 		FAF5BA0D202AE2410052F68D /* UIImageView+SaveImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF5BA0C202AE2410052F68D /* UIImageView+SaveImage.swift */; };
 /* End PBXBuildFile section */
 
@@ -43,8 +46,11 @@
 		4F77EC521FD822430047D9F1 /* UIExtensionsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UIExtensionsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F77EC561FD822430047D9F1 /* UIExtensionsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIExtensionsUITests.swift; sourceTree = "<group>"; };
 		4F77EC581FD822430047D9F1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FA8A281F20F4AEDB003300FC /* UILabel+Copy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Copy.swift"; sourceTree = "<group>"; };
+		FA55D88820FA138600CBE24F /* UIImageView+Copyable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Copyable.swift"; sourceTree = "<group>"; };
+		FA8A281F20F4AEDB003300FC /* UILabel+Copyable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Copyable.swift"; sourceTree = "<group>"; };
+		FA91506520F75C40003D33D2 /* MenuItemEnable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemEnable.swift; sourceTree = "<group>"; };
 		FAB4A45D1FE90E26009B20C5 /* UIImage+QRCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+QRCode.swift"; sourceTree = "<group>"; };
+		FAE6898B20F8DE3F0087FA1F /* UIView+MenuTrigger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+MenuTrigger.swift"; sourceTree = "<group>"; };
 		FAF5BA0C202AE2410052F68D /* UIImageView+SaveImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+SaveImage.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -69,11 +75,12 @@
 		4F10E3B01FDBB12A00859D87 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				4F10E3B11FDBB1B000859D87 /* UIView+Frame.swift */,
-				4F10E3B31FDBBDAE00859D87 /* UIButton+ImageAlignment.swift */,
-				FAB4A45D1FE90E26009B20C5 /* UIImage+QRCode.swift */,
-				FAF5BA0C202AE2410052F68D /* UIImageView+SaveImage.swift */,
-				FA8A281F20F4AEDB003300FC /* UILabel+Copy.swift */,
+				FA55D89120FA156200CBE24F /* UILabel */,
+				FA55D89020FA153000CBE24F /* UIButton */,
+				FA55D88F20FA152900CBE24F /* UIImage */,
+				FA55D88E20FA14F800CBE24F /* UIImageView */,
+				FA55D88D20FA14EB00CBE24F /* UIView */,
+				FA55D88C20FA14D100CBE24F /* Utils */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -117,6 +124,56 @@
 				4F77EC581FD822430047D9F1 /* Info.plist */,
 			);
 			path = UIExtensionsUITests;
+			sourceTree = "<group>";
+		};
+		FA55D88C20FA14D100CBE24F /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				FA91506520F75C40003D33D2 /* MenuItemEnable.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		FA55D88D20FA14EB00CBE24F /* UIView */ = {
+			isa = PBXGroup;
+			children = (
+				FAE6898B20F8DE3F0087FA1F /* UIView+MenuTrigger.swift */,
+				4F10E3B11FDBB1B000859D87 /* UIView+Frame.swift */,
+			);
+			path = UIView;
+			sourceTree = "<group>";
+		};
+		FA55D88E20FA14F800CBE24F /* UIImageView */ = {
+			isa = PBXGroup;
+			children = (
+				FAF5BA0C202AE2410052F68D /* UIImageView+SaveImage.swift */,
+				FA55D88820FA138600CBE24F /* UIImageView+Copyable.swift */,
+			);
+			path = UIImageView;
+			sourceTree = "<group>";
+		};
+		FA55D88F20FA152900CBE24F /* UIImage */ = {
+			isa = PBXGroup;
+			children = (
+				FAB4A45D1FE90E26009B20C5 /* UIImage+QRCode.swift */,
+			);
+			path = UIImage;
+			sourceTree = "<group>";
+		};
+		FA55D89020FA153000CBE24F /* UIButton */ = {
+			isa = PBXGroup;
+			children = (
+				4F10E3B31FDBBDAE00859D87 /* UIButton+ImageAlignment.swift */,
+			);
+			path = UIButton;
+			sourceTree = "<group>";
+		};
+		FA55D89120FA156200CBE24F /* UILabel */ = {
+			isa = PBXGroup;
+			children = (
+				FA8A281F20F4AEDB003300FC /* UILabel+Copyable.swift */,
+			);
+			path = UILabel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -164,7 +221,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0900;
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = FunctionMaker;
 				TargetAttributes = {
 					4F77EC3D1FD822420047D9F1 = {
@@ -225,9 +282,12 @@
 			files = (
 				4F77EC441FD822430047D9F1 /* ViewController.swift in Sources */,
 				4F77EC421FD822430047D9F1 /* AppDelegate.swift in Sources */,
+				FA91506620F75C40003D33D2 /* MenuItemEnable.swift in Sources */,
+				FA55D88920FA138600CBE24F /* UIImageView+Copyable.swift in Sources */,
+				FAE6898C20F8DE3F0087FA1F /* UIView+MenuTrigger.swift in Sources */,
 				FAB4A45E1FE90E26009B20C5 /* UIImage+QRCode.swift in Sources */,
 				4F10E3B21FDBB1B000859D87 /* UIView+Frame.swift in Sources */,
-				FA8A282020F4AEDB003300FC /* UILabel+Copy.swift in Sources */,
+				FA8A282020F4AEDB003300FC /* UILabel+Copyable.swift in Sources */,
 				4F10E3B41FDBBDAE00859D87 /* UIButton+ImageAlignment.swift in Sources */,
 				FAF5BA0D202AE2410052F68D /* UIImageView+SaveImage.swift in Sources */,
 			);
@@ -285,6 +345,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -292,6 +353,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -342,6 +404,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -349,6 +412,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -389,7 +453,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ifox.UIExtensions;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "UIExtensions/Extensions/UIExtensions-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -407,7 +470,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ifox.UIExtensions;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "UIExtensions/Extensions/UIExtensions-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
