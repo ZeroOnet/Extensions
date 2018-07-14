@@ -46,4 +46,13 @@ In some cases, we need to save image to local. for example, user avatar, qr code
 imageView.saveImage(finishedHandler: ((UIImage) -> Void)? = nil, failedHandler: ((Error) -> Void)? = nil)
 ```
 
+## UIImageView + MenuTrigger
+
+We need edit function, we need edit function, we need edit function, so:
+
+```
+myLabel.asMenuTrigger([MenuItem(title: "test", action: #selector(testAction))])
+```
+UIImageView and UILabel contain default copy action.
+
 <i><b>To be continue...</b></i>
