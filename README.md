@@ -46,7 +46,7 @@ In some cases, we need to save image to local. for example, user avatar, qr code
 imageView.saveImage(finishedHandler: ((UIImage) -> Void)? = nil, failedHandler: ((Error) -> Void)? = nil)
 ```
 
-## UIImageView + MenuTrigger
+## UIView + MenuTrigger
 
 We need edit function, we need edit function, we need edit function, so:
 
