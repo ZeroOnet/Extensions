@@ -8,70 +8,70 @@
 
 import UIKit
 
-extension UIView {
-    var zn_x: CGFloat {
-        return self.frame.origin.x
+extension Zonable where Base: UIView {
+    var x: CGFloat {
+        return base.frame.origin.x
     }
     
-    var zn_y: CGFloat {
-        return self.frame.origin.y
+    var y: CGFloat {
+        return base.frame.origin.y
     }
     
-    var zn_width: CGFloat {
-        return self.bounds.width
+    var width: CGFloat {
+        return base.bounds.width
     }
     
-    var zn_height: CGFloat {
-        return self.bounds.height
+    var height: CGFloat {
+        return base.bounds.height
     }
     
-    var zn_origin: CGPoint {
-        return self.frame.origin
+    var origin: CGPoint {
+        return base.frame.origin
     }
     
-    var zn_size: CGSize {
-        return self.bounds.size
+    var size: CGSize {
+        return base.bounds.size
     }
     
     func setX(_ x: CGFloat) {
-        var frame = self.frame
+        var frame = base.frame
         frame.origin.x = x
         
-        self.frame = frame
+        base.frame = frame
     }
     
     func setY(_ y: CGFloat) {
-        var frame = self.frame
+        var frame = base.frame
         frame.origin.y = y
         
-        self.frame = frame
+        base.frame = frame
     }
     
     func setWidth(_ width: CGFloat) {
-        var bounds = self.bounds
+        var bounds = base.bounds
         bounds.size.width = width
         
-        self.bounds = bounds
+        base.bounds = bounds
     }
     
     func setHeight(_ height: CGFloat) {
-        var bounds = self.bounds
+        var bounds = base.bounds
         bounds.size.height = height
         
-        self.bounds = bounds
+        base.bounds = bounds
     }
     
     func setOrigin(_ origin: CGPoint) {
-        var frame = self.frame
+        var frame = base.frame
         frame.origin = origin
         
-        self.frame = frame
+        base.frame = frame
     }
     
     func setSize(_ size: CGSize) {
-        var bounds = self.bounds
+        var bounds = base.bounds
         bounds.size = size
         
-        self.bounds = bounds
+        base.bounds = bounds
     }
 }

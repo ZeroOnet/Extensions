@@ -8,14 +8,14 @@
 
 import UIKit
 
-extension UIImage {
+extension Zonable where Base: UIImage {
     /// creat a QR code image with content and it's expected size
     ///
     /// - Parameters:
     ///   - content: string content
     ///   - size: expected size
     /// - Returns: result image
-    class func qrImage(content: String, size: CGSize) -> UIImage? {
+    static func qrImage(content: String, size: CGSize) -> UIImage? {
         let data = content.data(using: .utf8, allowLossyConversion: false)
         
         let filter = CIFilter(name: "CIQRCodeGenerator")
@@ -33,5 +33,52 @@ extension UIImage {
         let scaledOutputImage = outputImage.transformed(by: CGAffineTransform(scaleX: scaleX, y: scaleY))
         
         return UIImage(ciImage: scaledOutputImage)
+    }
+    
+    /// creat a gif image with content of url
+    ///
+    /// - Parameter url: content of url
+    /// - Returns: a gif image
+    static func gif(contentsOf url: URL) -> UIImage? {
+        guard let data = try? Data(contentsOf: url),
+            let imageSource = CGImageSourceCreateWithData(data as CFData, nil) else {
+                return nil
+        }
+        
+        let pageCount = CGImageSourceGetCount(imageSource)
+        
+        if pageCount <= 1 { return UIImage(data: data) }
+        
+        var duration: TimeInterval = 0
+        var images: [UIImage] = []
+        
+        for index in 0..<pageCount {
+            duration += frameDuration(at: index, source: imageSource)
+            
+            if let image = CGImageSourceCreateImageAtIndex(imageSource, index, nil) {
+                images.append(UIImage(cgImage: image, scale: UIScreen.main.scale, orientation: .up))
+            }
+        }
+        return UIImage.animatedImage(with: images, duration: duration)
+    }
+    
+    private static func frameDuration(at index: Int, source: CGImageSource) -> TimeInterval {
+        var frameDuration: TimeInterval = 0
+        
+        guard let frameProperties = CGImageSourceCopyPropertiesAtIndex(source, index, nil) as? Dictionary<String, Any>,
+            let gifProperties = frameProperties[kCGImagePropertyGIFDictionary as String] as? Dictionary<String, Any> else {
+                return frameDuration
+        }
+        
+        if let delayTimeUnclampedProperty = gifProperties[kCGImagePropertyGIFUnclampedDelayTime as String] as? TimeInterval {
+            frameDuration = delayTimeUnclampedProperty
+        } else if let delayTimeProperty = gifProperties[kCGImagePropertyGIFDelayTime as String] as? TimeInterval {
+            frameDuration = delayTimeProperty
+        }
+        
+        if frameDuration < 0.011 {
+            frameDuration = 0.100
+        }
+        return frameDuration
     }
 }

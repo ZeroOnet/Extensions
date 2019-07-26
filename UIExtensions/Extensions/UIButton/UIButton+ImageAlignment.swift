@@ -21,7 +21,7 @@ enum ImageAlignment {
     case right
 }
 
-extension UIButton {
+extension Zonable where Base: UIButton {
     /// adjust the locations of imageView and titleLabel
     ///
     /// - Parameters:
@@ -30,25 +30,25 @@ extension UIButton {
     ///   - spacing: the margin of imageView and titleLabel
     ///   - state: button's control state
     func setImage(_ image: UIImage?, imageAlignment: ImageAlignment, spacing: CGFloat = 0, state: UIControlState) {
-        setImage(image, for: state)
+        base.setImage(image, for: base.state)
         
         // back to initial state
-        self.imageEdgeInsets = UIEdgeInsets()
-        self.titleEdgeInsets = UIEdgeInsets()
-            
-        self.sizeToFit()
+        base.imageEdgeInsets = UIEdgeInsets()
+        base.titleEdgeInsets = UIEdgeInsets()
         
-        let imageViewWidth = self.imageView?.zn_width ?? 0
-        let imageViewHeight = self.imageView?.zn_height ?? 0
-        let titleLabelWidth = self.titleLabel?.zn_width ?? 0
-        let titleLabelHeight = self.titleLabel?.zn_height ?? 0
+        base.sizeToFit()
+        
+        let imageViewWidth = base.imageView?.zon.width ?? 0
+        let imageViewHeight = base.imageView?.zon.height ?? 0
+        let titleLabelWidth = base.titleLabel?.zon.width ?? 0
+        let titleLabelHeight = base.titleLabel?.zon.height ?? 0
         
         let centerX = (imageViewWidth + titleLabelWidth) / 2.0
         let imageMargin = centerX - imageViewWidth / 2.0
         let titleMargin = centerX - titleLabelWidth / 2.0
         
         let moveSpacing = spacing / 2.0
-
+        
         var imageEdgeInsets: UIEdgeInsets
         var titleEdgeInsets: UIEdgeInsets
         
@@ -92,7 +92,7 @@ extension UIButton {
                                            right: imageViewWidth + moveSpacing)
         }
         
-        self.imageEdgeInsets = imageEdgeInsets
-        self.titleEdgeInsets = titleEdgeInsets
+        base.imageEdgeInsets = imageEdgeInsets
+        base.titleEdgeInsets = titleEdgeInsets
     }
 }

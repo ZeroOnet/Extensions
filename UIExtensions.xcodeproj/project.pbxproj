@@ -15,6 +15,7 @@
 		4F77EC491FD822430047D9F1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F77EC481FD822430047D9F1 /* Assets.xcassets */; };
 		4F77EC4C1FD822430047D9F1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F77EC4A1FD822430047D9F1 /* LaunchScreen.storyboard */; };
 		4F77EC571FD822430047D9F1 /* UIExtensionsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F77EC561FD822430047D9F1 /* UIExtensionsUITests.swift */; };
+		FA38002A22EADD450075E7FE /* Compatible.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA38002922EADD450075E7FE /* Compatible.swift */; };
 		FA55D88920FA138600CBE24F /* UIImageView+Copyable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA55D88820FA138600CBE24F /* UIImageView+Copyable.swift */; };
 		FA8A282020F4AEDB003300FC /* UILabel+Copyable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8A281F20F4AEDB003300FC /* UILabel+Copyable.swift */; };
 		FA91506620F75C40003D33D2 /* MenuItemEnable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA91506520F75C40003D33D2 /* MenuItemEnable.swift */; };
@@ -46,6 +47,7 @@
 		4F77EC521FD822430047D9F1 /* UIExtensionsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UIExtensionsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F77EC561FD822430047D9F1 /* UIExtensionsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIExtensionsUITests.swift; sourceTree = "<group>"; };
 		4F77EC581FD822430047D9F1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FA38002922EADD450075E7FE /* Compatible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Compatible.swift; sourceTree = "<group>"; };
 		FA55D88820FA138600CBE24F /* UIImageView+Copyable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Copyable.swift"; sourceTree = "<group>"; };
 		FA8A281F20F4AEDB003300FC /* UILabel+Copyable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Copyable.swift"; sourceTree = "<group>"; };
 		FA91506520F75C40003D33D2 /* MenuItemEnable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemEnable.swift; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 			isa = PBXGroup;
 			children = (
 				FA91506520F75C40003D33D2 /* MenuItemEnable.swift */,
+				FA38002922EADD450075E7FE /* Compatible.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -286,6 +289,7 @@
 				FA55D88920FA138600CBE24F /* UIImageView+Copyable.swift in Sources */,
 				FAE6898C20F8DE3F0087FA1F /* UIView+MenuTrigger.swift in Sources */,
 				FAB4A45E1FE90E26009B20C5 /* UIImage+QRCode.swift in Sources */,
+				FA38002A22EADD450075E7FE /* Compatible.swift in Sources */,
 				4F10E3B21FDBB1B000859D87 /* UIView+Frame.swift in Sources */,
 				FA8A282020F4AEDB003300FC /* UILabel+Copyable.swift in Sources */,
 				4F10E3B41FDBBDAE00859D87 /* UIButton+ImageAlignment.swift in Sources */,

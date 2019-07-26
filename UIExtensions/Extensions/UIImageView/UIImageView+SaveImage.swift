@@ -12,7 +12,6 @@ private var kFinishedKey: UInt8 = 0
 private var kFailedKey: UInt8 = 1
 
 extension UIImageView {
-    
     /// use Runtime to store call back handlers
     private var finishedHandler: ((UIImage) -> Void)? {
         get {
