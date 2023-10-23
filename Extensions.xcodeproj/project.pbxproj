@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 48;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -12,11 +12,13 @@
 		4F77EC471FD822430047D9F1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F77EC451FD822430047D9F1 /* Main.storyboard */; };
 		4F77EC491FD822430047D9F1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F77EC481FD822430047D9F1 /* Assets.xcassets */; };
 		4F77EC4C1FD822430047D9F1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F77EC4A1FD822430047D9F1 /* LaunchScreen.storyboard */; };
-		FA52235F2AE63F7800680C24 /* UIImageView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA52235A2AE63F7800680C24 /* UIImageView+Extensions.swift */; };
-		FA5223602AE63F7800680C24 /* UIButton+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA52235B2AE63F7800680C24 /* UIButton+Extensions.swift */; };
-		FA5223612AE63F7800680C24 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA52235C2AE63F7800680C24 /* UIView+Extensions.swift */; };
-		FA5223622AE63F7800680C24 /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA52235D2AE63F7800680C24 /* UIImage+Extensions.swift */; };
 		FA5223632AE63F7800680C24 /* Compatible.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA52235E2AE63F7800680C24 /* Compatible.swift */; };
+		FA8776562AE648B900323A16 /* UIImageView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8776512AE648B900323A16 /* UIImageView+Extensions.swift */; };
+		FA8776572AE648B900323A16 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8776522AE648B900323A16 /* UIViewController+Extensions.swift */; };
+		FA8776582AE648B900323A16 /* UIButton+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8776532AE648B900323A16 /* UIButton+Extensions.swift */; };
+		FA8776592AE648B900323A16 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8776542AE648B900323A16 /* UIView+Extensions.swift */; };
+		FA87765A2AE648B900323A16 /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8776552AE648B900323A16 /* UIImage+Extensions.swift */; };
+		FA87765E2AE648E400323A16 /* Aspects.m in Sources */ = {isa = PBXBuildFile; fileRef = FA87765C2AE648E400323A16 /* Aspects.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,11 +29,15 @@
 		4F77EC481FD822430047D9F1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4F77EC4B1FD822430047D9F1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4F77EC4D1FD822430047D9F1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FA52235A2AE63F7800680C24 /* UIImageView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extensions.swift"; sourceTree = "<group>"; };
-		FA52235B2AE63F7800680C24 /* UIButton+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Extensions.swift"; sourceTree = "<group>"; };
-		FA52235C2AE63F7800680C24 /* UIView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
-		FA52235D2AE63F7800680C24 /* UIImage+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
 		FA52235E2AE63F7800680C24 /* Compatible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Compatible.swift; sourceTree = "<group>"; };
+		FA8776512AE648B900323A16 /* UIImageView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extensions.swift"; sourceTree = "<group>"; };
+		FA8776522AE648B900323A16 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
+		FA8776532AE648B900323A16 /* UIButton+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Extensions.swift"; sourceTree = "<group>"; };
+		FA8776542AE648B900323A16 /* UIView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
+		FA8776552AE648B900323A16 /* UIImage+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
+		FA87765B2AE648E400323A16 /* Extensions-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Extensions-Bridging-Header.h"; sourceTree = "<group>"; };
+		FA87765C2AE648E400323A16 /* Aspects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Aspects.m; sourceTree = "<group>"; };
+		FA87765D2AE648E400323A16 /* Aspects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Aspects.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +71,7 @@
 			isa = PBXGroup;
 			children = (
 				FA5223592AE63F7800680C24 /* Core */,
+				FA8776502AE648B900323A16 /* Methods */,
 				4F77EC411FD822430047D9F1 /* AppDelegate.swift */,
 				4F77EC431FD822430047D9F1 /* ViewController.swift */,
 				4F77EC451FD822430047D9F1 /* Main.storyboard */,
@@ -78,13 +85,24 @@
 		FA5223592AE63F7800680C24 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				FA52235A2AE63F7800680C24 /* UIImageView+Extensions.swift */,
-				FA52235B2AE63F7800680C24 /* UIButton+Extensions.swift */,
-				FA52235C2AE63F7800680C24 /* UIView+Extensions.swift */,
-				FA52235D2AE63F7800680C24 /* UIImage+Extensions.swift */,
+				FA87765D2AE648E400323A16 /* Aspects.h */,
+				FA87765C2AE648E400323A16 /* Aspects.m */,
 				FA52235E2AE63F7800680C24 /* Compatible.swift */,
+				FA87765B2AE648E400323A16 /* Extensions-Bridging-Header.h */,
 			);
 			path = Core;
+			sourceTree = "<group>";
+		};
+		FA8776502AE648B900323A16 /* Methods */ = {
+			isa = PBXGroup;
+			children = (
+				FA8776512AE648B900323A16 /* UIImageView+Extensions.swift */,
+				FA8776522AE648B900323A16 /* UIViewController+Extensions.swift */,
+				FA8776532AE648B900323A16 /* UIButton+Extensions.swift */,
+				FA8776542AE648B900323A16 /* UIView+Extensions.swift */,
+				FA8776552AE648B900323A16 /* UIImage+Extensions.swift */,
+			);
+			path = Methods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -113,13 +131,14 @@
 		4F77EC361FD822420047D9F1 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 0900;
-				LastUpgradeCheck = 0940;
+				LastUpgradeCheck = 1500;
 				ORGANIZATIONNAME = FunctionMaker;
 				TargetAttributes = {
 					4F77EC3D1FD822420047D9F1 = {
 						CreatedOnToolsVersion = 9.0.1;
-						LastSwiftMigration = "";
+						LastSwiftMigration = 1500;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -160,12 +179,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FA52235F2AE63F7800680C24 /* UIImageView+Extensions.swift in Sources */,
-				FA5223602AE63F7800680C24 /* UIButton+Extensions.swift in Sources */,
-				FA5223612AE63F7800680C24 /* UIView+Extensions.swift in Sources */,
-				FA5223622AE63F7800680C24 /* UIImage+Extensions.swift in Sources */,
+				FA8776572AE648B900323A16 /* UIViewController+Extensions.swift in Sources */,
+				FA8776562AE648B900323A16 /* UIImageView+Extensions.swift in Sources */,
+				FA87765E2AE648E400323A16 /* Aspects.m in Sources */,
+				FA8776592AE648B900323A16 /* UIView+Extensions.swift in Sources */,
 				4F77EC441FD822430047D9F1 /* ViewController.swift in Sources */,
 				4F77EC421FD822430047D9F1 /* AppDelegate.swift in Sources */,
+				FA87765A2AE648B900323A16 /* UIImage+Extensions.swift in Sources */,
+				FA8776582AE648B900323A16 /* UIButton+Extensions.swift in Sources */,
 				FA5223632AE63F7800680C24 /* Compatible.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -217,6 +238,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -228,6 +250,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -242,7 +265,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -276,6 +299,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -287,6 +311,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -295,10 +320,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -311,9 +337,13 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6J9MADK992;
 				INFOPLIST_FILE = Extensions/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ifox.UIExtensions;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Extensions/Core/Extensions-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -328,9 +358,13 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6J9MADK992;
 				INFOPLIST_FILE = Extensions/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ifox.UIExtensions;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Extensions/Core/Extensions-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

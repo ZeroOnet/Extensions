@@ -52,4 +52,13 @@ We need edit function, we need edit function, we need edit function, so:
 myLabel.zon.asMenuTrigger([MenuItem(title: "test", action: #selector(testAction))])
 ```
 
+## UIViewController + Duration
+
+The time interval of browsing view:
+
+```swift
+scene.zon.enableDurationTrack()
+scene.zon.duration
+```
+
 <i><b>To be continue...</b></i>

@@ -21,8 +21,7 @@ extension Zonable where Base: UIImageView {
     func saveImage(completion: @escaping (Result<UIImage, Error>) -> Void) {
         guard let image = base.image else { completion(.failure(FailureReason.invalidImage)); return }
         PHPhotoLibrary.shared()
-            .performChanges(
-                { PHAssetChangeRequest.creationRequestForAsset(from: image) },
+            .performChanges({ PHAssetChangeRequest.creationRequestForAsset(from: image) },
                 completionHandler: { flag, error in
                     if flag { completion(.success(image)) }
                     else if let error { completion(.failure(FailureReason.saveFailed(error))) }
