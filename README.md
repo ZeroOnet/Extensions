@@ -14,44 +14,42 @@ I should create this repository to summary some UI(cocoa Touch) extensions that 
 
 The code like this:
 
-```
-button.setImage(image, imageAlignment: .top, spacing: 0, state: .normal)
+```swift
+button.zon.setImage(image, imageAlignment: .top, spacing: 0, state: .normal)
 ```
 
 Effect just like this:
 
-![bottom image](https://github.com/ZeroOnet/UIExtensions/blob/master/UIExtensions/Display/bottom.png)
-![left margin image](https://github.com/ZeroOnet/UIExtensions/blob/master/UIExtensions/Display/leftMargin.png)
-![right margin image](https://github.com/ZeroOnet/UIExtensions/blob/master/UIExtensions/Display/rightMargin.png)
-![top image](https://github.com/ZeroOnet/UIExtensions/blob/master/UIExtensions/Display/top.png)
+![bottom image](https://github.com/ZeroOnet/Extensions/blob/master/Extensions/Display/bottom.png)
+![left margin image](https://github.com/ZeroOnet/Extensions/blob/master/Extensions/Display/leftMargin.png)
+![right margin image](https://github.com/ZeroOnet/Extensions/blob/master/Extensions/Display/rightMargin.png)
+![top image](https://github.com/ZeroOnet/Extensions/blob/master/Extensions/Display/top.png)
 
 ## UIImage + QRCodeImage
 
 A sample class func:
 
-```
-QRImageView.image = UIImage.qrImage(content: "我(I) you 🤣", size: CGSize(width: 200, height: 200))
+```swift
+QRImageView.image = UIImage.zon.qrImage(content: "我(I) you 🤣", size: CGSize(width: 200, height: 200))
 ```
 
 The QR code image as follows:<br></br>
-![QR code image](https://github.com/ZeroOnet/UIExtensions/blob/master/UIExtensions/Display/QRCode.png)
+![QR code image](https://github.com/ZeroOnet/Extensions/blob/master/Extensions/Display/QRCode.png)
 
 ## UIImageView + SaveImage
 
-In some cases, we need to save image to local. for example, user avatar, qr code......
+Save image of UIImageView to album by Photos:
 
-`UIImageWriteToSavedPhotosAlbum` can help us finish it simply. But there is a point should be noticed: get current context graphics image and then save. You can use it like this under this extension:
-
-```
-imageView.saveImage(finishedHandler: ((UIImage) -> Void)? = nil, failedHandler: ((Error) -> Void)? = nil)
+```swift
+imageView.zon.saveImage(completion: @escaping (Result<UIImage, Error>) -> Void)
 ```
 
 ## UIView + MenuTrigger
 
 We need edit function, we need edit function, we need edit function, so:
 
-```
-myLabel.asMenuTrigger([MenuItem(title: "test", action: #selector(testAction))])
+```swift
+myLabel.zon.asMenuTrigger([MenuItem(title: "test", action: #selector(testAction))])
 ```
 
 <i><b>To be continue...</b></i>
