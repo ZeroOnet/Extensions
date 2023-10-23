@@ -6,7 +6,7 @@ completely independent.
 
 So for recording my growth, for writing less codes, for better tomorrow......
 
-I should create this repository to summary some UI(cocoa Touch) extensions that are likely to be used in our work. 
+I should create this repository to summary some UI(cocoa Touch) extensions that are likely to be used in our work.
 
 # Usage
 
@@ -53,6 +53,5 @@ We need edit function, we need edit function, we need edit function, so:
 ```
 myLabel.asMenuTrigger([MenuItem(title: "test", action: #selector(testAction))])
 ```
-UIImageView and UILabel contain default copy action.
 
 <i><b>To be continue...</b></i>

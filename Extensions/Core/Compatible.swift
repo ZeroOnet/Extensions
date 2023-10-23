@@ -15,17 +15,8 @@ protocol Compatible {
 }
 
 extension Compatible {
-    static var zon: Zonable<Self>.Type {
-        get {
-            return Zonable<Self>.self
-        }
-    }
-    
-    var zon: Zonable<Self> {
-        get {
-            return Zonable(self)
-        }
-    }
+    static var zon: Zonable<Self>.Type { Zonable<Self>.self }
+    var zon: Zonable<Self> { Zonable(self) }
 }
 
 struct Zonable<Base> {
