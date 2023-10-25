@@ -6,6 +6,35 @@
 //  Copyright © 2017年 FunctionMaker. All rights reserved.
 //
 
+// MARK: - Transform
+extension Zonable where Base: UIImage {
+    /// Rotate image with specified degree by clockwise.
+    func rotate(degree: CGFloat) -> UIImage? {
+        guard let cgImage = base.cgImage else { return nil }
+
+        let imageSize = base.size
+        let imageWidth = imageSize.width
+        let imageHeight = imageSize.height
+        let radian = degree * .pi / 180
+        let transform = CGAffineTransform(rotationAngle: radian)
+        let rotatedSize = CGRect(x: 0, y: 0, width: imageWidth, height: imageHeight)
+            .applying(transform)
+            .size
+        UIGraphicsBeginImageContextWithOptions(rotatedSize, _isOpaque(image: base), UIScreen.main.scale)
+        defer { UIGraphicsEndImageContext() }
+
+        guard let ctx = UIGraphicsGetCurrentContext() else { return nil }
+
+        ctx.translateBy(x: rotatedSize.width / 2, y: rotatedSize.height / 2)
+        ctx.rotate(by: radian)
+        ctx.scaleBy(x: 1.0, y: -1.0)
+
+        let drawOrigin = CGPoint(x: -imageWidth / 2, y: -imageHeight / 2)
+        ctx.draw(cgImage, in: CGRect(origin: drawOrigin, size: imageSize))
+        return UIGraphicsGetImageFromCurrentImageContext()
+    }
+}
+
 // MARK: - Color
 extension Zonable where Base: UIImage {
     /// Compose image by specified color.
@@ -15,9 +44,7 @@ extension Zonable where Base: UIImage {
         let rect = CGRect(origin: .zero, size: size)
         let opaque = color.cgColor.alpha == 1
         UIGraphicsBeginImageContextWithOptions(size, opaque, UIScreen.main.scale)
-        defer {
-            UIGraphicsEndImageContext()
-        }
+        defer { UIGraphicsEndImageContext() }
         guard let ctx = UIGraphicsGetCurrentContext() else { return nil }
         ctx.setFillColor(color.cgColor)
         ctx.fill(rect)
@@ -28,20 +55,20 @@ extension Zonable where Base: UIImage {
 
     func tint(with color: UIColor) -> UIImage? {
         let image = base.withRenderingMode(.alwaysTemplate)
-        let opaque: Bool
-        if let alphaValue = base.cgImage?.alphaInfo.rawValue {
-            opaque = [CGImageAlphaInfo.none, .noneSkipLast, .noneSkipFirst].contains { $0.rawValue == alphaValue }
-        } else {
-            opaque = true
-        }
-        UIGraphicsBeginImageContextWithOptions(base.size, opaque, base.scale)
-        defer {
-            UIGraphicsEndImageContext()
-        }
+        UIGraphicsBeginImageContextWithOptions(base.size, _isOpaque(image: base), base.scale)
+        defer { UIGraphicsEndImageContext() }
         color.set()
         image.draw(in: CGRect(origin: .zero, size: base.size))
         guard let imageColored = UIGraphicsGetImageFromCurrentImageContext() else { return nil }
         return imageColored
+    }
+
+    fileprivate func _isOpaque(image: UIImage) -> Bool {
+        if let alphaValue = image.cgImage?.alphaInfo.rawValue {
+            return [CGImageAlphaInfo.none, .noneSkipLast, .noneSkipFirst].contains { $0.rawValue == alphaValue }
+        } else {
+            return true
+        }
     }
 }
 
