@@ -19,6 +19,7 @@
 		FA8776592AE648B900323A16 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8776542AE648B900323A16 /* UIView+Extensions.swift */; };
 		FA87765A2AE648B900323A16 /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8776552AE648B900323A16 /* UIImage+Extensions.swift */; };
 		FA87765E2AE648E400323A16 /* Aspects.m in Sources */ = {isa = PBXBuildFile; fileRef = FA87765C2AE648E400323A16 /* Aspects.m */; };
+		FA9554752AE8E7D7005A54D8 /* UINavigationController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9554742AE8E7D7005A54D8 /* UINavigationController+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		FA87765B2AE648E400323A16 /* Extensions-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Extensions-Bridging-Header.h"; sourceTree = "<group>"; };
 		FA87765C2AE648E400323A16 /* Aspects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Aspects.m; sourceTree = "<group>"; };
 		FA87765D2AE648E400323A16 /* Aspects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Aspects.h; sourceTree = "<group>"; };
+		FA9554742AE8E7D7005A54D8 /* UINavigationController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 				FA8776532AE648B900323A16 /* UIButton+Extensions.swift */,
 				FA8776542AE648B900323A16 /* UIView+Extensions.swift */,
 				FA8776552AE648B900323A16 /* UIImage+Extensions.swift */,
+				FA9554742AE8E7D7005A54D8 /* UINavigationController+Extensions.swift */,
 			);
 			path = Methods;
 			sourceTree = "<group>";
@@ -182,6 +185,7 @@
 				FA8776572AE648B900323A16 /* UIViewController+Extensions.swift in Sources */,
 				FA8776562AE648B900323A16 /* UIImageView+Extensions.swift in Sources */,
 				FA87765E2AE648E400323A16 /* Aspects.m in Sources */,
+				FA9554752AE8E7D7005A54D8 /* UINavigationController+Extensions.swift in Sources */,
 				FA8776592AE648B900323A16 /* UIView+Extensions.swift in Sources */,
 				4F77EC441FD822430047D9F1 /* ViewController.swift in Sources */,
 				4F77EC421FD822430047D9F1 /* AppDelegate.swift in Sources */,

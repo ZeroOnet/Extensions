@@ -6,7 +6,7 @@
 //  Copyright © 2019 FunctionMaker. All rights reserved.
 //
 
-import Foundation
+@_exported import UIKit
 
 protocol Compatible {
     associatedtype CompatibleType

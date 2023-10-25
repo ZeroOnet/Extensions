@@ -6,8 +6,6 @@
 //  Copyright © 2018 FunctionMaker. All rights reserved.
 //
 
-import UIKit
-
 /// menu item enable protocol
 protocol MenuItemEnable {
     var title: String { get }

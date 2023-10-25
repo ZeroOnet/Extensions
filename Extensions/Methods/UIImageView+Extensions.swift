@@ -7,7 +7,6 @@
 //
 
 import Photos
-import UIKit
 
 extension Zonable where Base: UIImageView {
     enum FailureReason: Error {

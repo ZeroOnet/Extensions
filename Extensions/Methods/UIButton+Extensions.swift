@@ -6,8 +6,6 @@
 //  Copyright © 2017年 FunctionMaker. All rights reserved.
 //
 
-import UIKit
-
 extension Zonable where Base: UIButton {
     /// button's imageView alignment
     ///

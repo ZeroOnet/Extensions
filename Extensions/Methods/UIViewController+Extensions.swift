@@ -6,8 +6,6 @@
 //  Copyright © 2023 FunctionMaker. All rights reserved.
 //
 
-import UIKit
-
 // MARK: - Child
 // https://developer.apple.com/library/archive/featuredarticles/ViewControllerPGforiPhoneOS/ImplementingaContainerViewController.html
 extension Zonable where Base: UIViewController {
@@ -21,7 +19,7 @@ extension Zonable where Base: UIViewController {
         base.view.addSubview(child.view)
         child.didMove(toParent: base)
     }
-    
+
     /// Remove child view controller from self.
     func removeChild(_ child: UIViewController) {
         guard base.children.contains(child) else { return }
@@ -75,10 +73,18 @@ private class _DurationTracker {
 
             // notification active & inactive
             let center = NotificationCenter.default
-            center.addObserver(forName: UIApplication.willResignActiveNotification, object: nil, queue: nil) { [weak self] _ in
+            center.addObserver(
+                forName: UIApplication.willResignActiveNotification,
+                object: nil,
+                queue: nil
+            ) { [weak self] _ in
                 self?.endDate = Date()
             }
-            center.addObserver(forName: UIApplication.didBecomeActiveNotification, object: nil, queue: nil) { [weak self] _ in
+            center.addObserver(
+                forName: UIApplication.didBecomeActiveNotification,
+                object: nil,
+                queue: nil
+            ) { [weak self] _ in
                 self?.startDate = Date()
             }
         }
