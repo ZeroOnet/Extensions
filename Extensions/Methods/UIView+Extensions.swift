@@ -6,7 +6,7 @@
 //  Copyright © 2018 FunctionMaker. All rights reserved.
 //
 
-/// menu item enable protocol
+// MARK: - Menu
 protocol MenuItemEnable {
     var title: String { get }
     var action: Selector { get }
@@ -29,21 +29,61 @@ extension Zonable where Base: UIView {
 
 // MARK: - Shortcuts of frame
 extension Zonable where Base: UIView {
-    var x: CGFloat { base.frame.origin.x }
-    var y: CGFloat { base.frame.origin.y }
+    var x: CGFloat {
+        get { base.frame.origin.x }
+        set { base.frame.origin.x = newValue }
+    }
 
-    var width: CGFloat { base.bounds.width }
-    var height: CGFloat { base.bounds.height }
+    var y: CGFloat {
+        get { base.frame.origin.y }
+        set { base.frame.origin.y = newValue }
+    }
 
-    var origin: CGPoint { base.frame.origin }
-    var size: CGSize { base.bounds.size }
+    var origin: CGPoint {
+        get { base.frame.origin }
+        set { base.frame.origin = newValue }
+    }
 
-    func setX(_ x: CGFloat) { base.frame.origin.x = x }
-    func setY(_ y: CGFloat) { base.frame.origin.y = y }
+    var width: CGFloat {
+        get { base.frame.size.width }
+        set { base.frame.size.width = newValue }
+    }
 
-    func setWidth(_ width: CGFloat) { base.frame.size.width = width }
-    func setHeight(_ height: CGFloat) { base.frame.size.height = height }
+    var height: CGFloat {
+        get { base.frame.size.height }
+        set { base.frame.size.height = newValue }
+    }
 
-    func setOrigin(_ origin: CGPoint) { base.frame.origin = origin }
-    func setSize(_ size: CGSize) { base.frame.size = size }
+    var size: CGSize {
+        get { base.frame.size }
+        set { base.frame.size = newValue }
+    }
+
+    var top: CGFloat {
+        get { y }
+        set { y = newValue }
+    }
+
+    var leading: CGFloat {
+        get { x }
+        set { x = newValue }
+    }
+
+    var bottom: CGFloat {
+        get { y + height }
+        set {
+            var frame = base.frame
+            frame.origin.y = newValue - frame.size.height
+            base.frame = frame
+        }
+    }
+
+    var trailing: CGFloat {
+        get { x + width }
+        set {
+            var frame = base.frame
+            frame.origin.x = newValue - frame.size.width
+            base.frame = frame
+        }
+    }
 }
