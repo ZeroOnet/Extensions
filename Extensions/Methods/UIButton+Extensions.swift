@@ -29,7 +29,7 @@ extension Zonable where Base: UIButton {
     ///   - imageAlignment: imageView's location relative to titleLabel
     ///   - spacing: the margin of imageView and titleLabel
     ///   - state: button's control state
-    func setImage(_ image: UIImage?, imageAlignment: ImageAlignment, spacing: CGFloat = 0, state: UIControlState) {
+    func setImage(_ image: UIImage?, imageAlignment: ImageAlignment, spacing: CGFloat = 0, state: UIControl.State) {
         base.setImage(image, for: base.state)
 
         // back to initial state

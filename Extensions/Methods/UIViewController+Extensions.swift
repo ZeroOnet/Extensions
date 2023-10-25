@@ -8,6 +8,33 @@
 
 import UIKit
 
+// MARK: - Child
+// https://developer.apple.com/library/archive/featuredarticles/ViewControllerPGforiPhoneOS/ImplementingaContainerViewController.html
+extension Zonable where Base: UIViewController {
+    /// Add child view controller to self.
+    func addChild(_ child: UIViewController) {
+        guard !base.children.contains(child) else { return }
+
+        // system call
+        // childController.willMove(toParent: base)
+        base.addChild(child)
+        base.view.addSubview(child.view)
+        child.didMove(toParent: base)
+    }
+    
+    /// Remove child view controller from self.
+    func removeChild(_ child: UIViewController) {
+        guard base.children.contains(child) else { return }
+
+        child.willMove(toParent: nil)
+        child.view.removeFromSuperview()
+        child.removeFromParent()
+        // system call
+        // childController.didMove(toParent: nil)
+    }
+}
+
+// MARK: - Duration
 extension Zonable where Base: UIViewController {
     /// The time interval of browsing view.
     /// - Warning: Call `enableDurationTrack` at first. 0 is invalid value.
@@ -48,10 +75,10 @@ private class _DurationTracker {
 
             // notification active & inactive
             let center = NotificationCenter.default
-            center.addObserver(forName: .UIApplicationWillResignActive, object: nil, queue: nil) { [weak self] _ in
+            center.addObserver(forName: UIApplication.willResignActiveNotification, object: nil, queue: nil) { [weak self] _ in
                 self?.endDate = Date()
             }
-            center.addObserver(forName: .UIApplicationDidBecomeActive, object: nil, queue: nil) { [weak self] _ in
+            center.addObserver(forName: UIApplication.didBecomeActiveNotification, object: nil, queue: nil) { [weak self] _ in
                 self?.startDate = Date()
             }
         }
