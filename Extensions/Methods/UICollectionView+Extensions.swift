@@ -81,3 +81,16 @@ extension Zonable where Base: UICollectionView {
         ) as! View // swiftlint:disable:this force_cast
     }
 }
+
+// MARK: - Scroll
+extension Zonable where Base: UICollectionView {
+    func scrollToBottom(position: UICollectionView.ScrollPosition, animated: Bool = true) {
+        let sectionsCount = base.numberOfSections
+        if sectionsCount == 0 { return }
+        let sectionIdx = sectionsCount - 1
+        let lastSectionItemsCount = base.numberOfItems(inSection: sectionIdx)
+        if lastSectionItemsCount == 0 { return }
+        let indexPath = IndexPath(item: lastSectionItemsCount - 1, section: sectionIdx)
+        base.scrollToItem(at: indexPath, at: position, animated: animated)
+    }
+}
