@@ -6,6 +6,46 @@
 //  Copyright © 2017年 FunctionMaker. All rights reserved.
 //
 
+// MARK: - Color
+extension Zonable where Base: UIImage {
+    /// Compose image by specified color.
+    static func image(color: UIColor, size: CGSize = .init(width: 1, height: 1)) -> UIImage? {
+        guard size.width > 0 && size.height > 0 else { return nil }
+
+        let rect = CGRect(origin: .zero, size: size)
+        let opaque = color.cgColor.alpha == 1
+        UIGraphicsBeginImageContextWithOptions(size, opaque, UIScreen.main.scale)
+        defer {
+            UIGraphicsEndImageContext()
+        }
+        guard let ctx = UIGraphicsGetCurrentContext() else { return nil }
+        ctx.setFillColor(color.cgColor)
+        ctx.fill(rect)
+
+        guard let cgImage = UIGraphicsGetImageFromCurrentImageContext()?.cgImage else { return nil }
+        return UIImage(cgImage: cgImage)
+    }
+
+    func tint(with color: UIColor) -> UIImage? {
+        let image = base.withRenderingMode(.alwaysTemplate)
+        let opaque: Bool
+        if let alphaValue = base.cgImage?.alphaInfo.rawValue {
+            opaque = [CGImageAlphaInfo.none, .noneSkipLast, .noneSkipFirst].contains { $0.rawValue == alphaValue }
+        } else {
+            opaque = true
+        }
+        UIGraphicsBeginImageContextWithOptions(base.size, opaque, base.scale)
+        defer {
+            UIGraphicsEndImageContext()
+        }
+        color.set()
+        image.draw(in: CGRect(origin: .zero, size: base.size))
+        guard let imageColored = UIGraphicsGetImageFromCurrentImageContext() else { return nil }
+        return imageColored
+    }
+}
+
+// MARK: - QRCode
 extension Zonable where Base: UIImage {
     /// creat a QR code image with content and it's expected size
     ///
@@ -32,24 +72,35 @@ extension Zonable where Base: UIImage {
 
         return UIImage(ciImage: scaledOutputImage)
     }
+}
 
+// MARK: - GIF
+extension Zonable where Base: UIImage {
     /// creat a gif image with content of url
     ///
     /// - Parameter url: content of url
     /// - Returns: a gif image
     static func gif(contentsOf url: URL) -> UIImage? {
-        guard let data = try? Data(contentsOf: url),
-            let imageSource = CGImageSourceCreateWithData(data as CFData, nil) else {
-                return nil
+        guard let components = gifComponents(contentsOf: url) else {
+            return nil
         }
+        return UIImage.animatedImage(with: components.images, duration: components.duration)
+    }
+
+    static func gifComponents(contentsOf url: URL) -> (images: [UIImage], duration: TimeInterval)? {
+        guard
+            let data = try? Data(contentsOf: url),
+            let imageSource = CGImageSourceCreateWithData(data as CFData, nil)
+        else { return nil }
 
         let pageCount = CGImageSourceGetCount(imageSource)
-
-        if pageCount <= 1 { return UIImage(data: data) }
+        if pageCount <= 1 {
+            guard let image = UIImage(data: data) else { return nil }
+            return ([image], 0)
+        }
 
         var duration: TimeInterval = 0
         var images: [UIImage] = []
-
         for index in 0..<pageCount {
             duration += _frameDuration(at: index, source: imageSource)
 
@@ -57,16 +108,16 @@ extension Zonable where Base: UIImage {
                 images.append(UIImage(cgImage: image, scale: UIScreen.main.scale, orientation: .up))
             }
         }
-        return UIImage.animatedImage(with: images, duration: duration)
+        return (images, duration)
     }
 
     private static func _frameDuration(at index: Int, source: CGImageSource) -> TimeInterval {
         var frameDuration: TimeInterval = 0
 
-        guard let frameProperties = CGImageSourceCopyPropertiesAtIndex(source, index, nil) as? [String: Any],
-            let gifProperties = frameProperties[kCGImagePropertyGIFDictionary as String] as? [String: Any] else {
-                return frameDuration
-        }
+        guard
+            let frameProperties = CGImageSourceCopyPropertiesAtIndex(source, index, nil) as? [String: Any],
+            let gifProperties = frameProperties[kCGImagePropertyGIFDictionary as String] as? [String: Any]
+        else { return frameDuration }
 
         if let delayTimeUnclampedProperty = gifProperties[
             kCGImagePropertyGIFUnclampedDelayTime as String
