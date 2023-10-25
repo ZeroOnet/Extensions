@@ -20,6 +20,7 @@
 		FA87765A2AE648B900323A16 /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8776552AE648B900323A16 /* UIImage+Extensions.swift */; };
 		FA87765E2AE648E400323A16 /* Aspects.m in Sources */ = {isa = PBXBuildFile; fileRef = FA87765C2AE648E400323A16 /* Aspects.m */; };
 		FA9554752AE8E7D7005A54D8 /* UINavigationController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9554742AE8E7D7005A54D8 /* UINavigationController+Extensions.swift */; };
+		FA9554772AE8EABC005A54D8 /* UIPasteboard+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9554762AE8EABC005A54D8 /* UIPasteboard+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		FA87765C2AE648E400323A16 /* Aspects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Aspects.m; sourceTree = "<group>"; };
 		FA87765D2AE648E400323A16 /* Aspects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Aspects.h; sourceTree = "<group>"; };
 		FA9554742AE8E7D7005A54D8 /* UINavigationController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Extensions.swift"; sourceTree = "<group>"; };
+		FA9554762AE8EABC005A54D8 /* UIPasteboard+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIPasteboard+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 				FA8776542AE648B900323A16 /* UIView+Extensions.swift */,
 				FA8776552AE648B900323A16 /* UIImage+Extensions.swift */,
 				FA9554742AE8E7D7005A54D8 /* UINavigationController+Extensions.swift */,
+				FA9554762AE8EABC005A54D8 /* UIPasteboard+Extensions.swift */,
 			);
 			path = Methods;
 			sourceTree = "<group>";
@@ -191,6 +194,7 @@
 				4F77EC421FD822430047D9F1 /* AppDelegate.swift in Sources */,
 				FA87765A2AE648B900323A16 /* UIImage+Extensions.swift in Sources */,
 				FA8776582AE648B900323A16 /* UIButton+Extensions.swift in Sources */,
+				FA9554772AE8EABC005A54D8 /* UIPasteboard+Extensions.swift in Sources */,
 				FA5223632AE63F7800680C24 /* Compatible.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
