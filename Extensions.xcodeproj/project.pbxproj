@@ -22,6 +22,8 @@
 		FA9554752AE8E7D7005A54D8 /* UINavigationController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9554742AE8E7D7005A54D8 /* UINavigationController+Extensions.swift */; };
 		FA9554772AE8EABC005A54D8 /* UIPasteboard+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9554762AE8EABC005A54D8 /* UIPasteboard+Extensions.swift */; };
 		FA9554792AE8FB41005A54D8 /* UIStackView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9554782AE8FB41005A54D8 /* UIStackView+Extensions.swift */; };
+		FA95547B2AE8FF53005A54D8 /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA95547A2AE8FF53005A54D8 /* UITableView+Extensions.swift */; };
+		FA95547D2AE910E5005A54D8 /* UICollectionView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA95547C2AE910E5005A54D8 /* UICollectionView+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +46,8 @@
 		FA9554742AE8E7D7005A54D8 /* UINavigationController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Extensions.swift"; sourceTree = "<group>"; };
 		FA9554762AE8EABC005A54D8 /* UIPasteboard+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIPasteboard+Extensions.swift"; sourceTree = "<group>"; };
 		FA9554782AE8FB41005A54D8 /* UIStackView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Extensions.swift"; sourceTree = "<group>"; };
+		FA95547A2AE8FF53005A54D8 /* UITableView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
+		FA95547C2AE910E5005A54D8 /* UICollectionView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +114,8 @@
 				FA9554742AE8E7D7005A54D8 /* UINavigationController+Extensions.swift */,
 				FA9554762AE8EABC005A54D8 /* UIPasteboard+Extensions.swift */,
 				FA9554782AE8FB41005A54D8 /* UIStackView+Extensions.swift */,
+				FA95547A2AE8FF53005A54D8 /* UITableView+Extensions.swift */,
+				FA95547C2AE910E5005A54D8 /* UICollectionView+Extensions.swift */,
 			);
 			path = Methods;
 			sourceTree = "<group>";
@@ -188,6 +194,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA95547D2AE910E5005A54D8 /* UICollectionView+Extensions.swift in Sources */,
 				FA8776572AE648B900323A16 /* UIViewController+Extensions.swift in Sources */,
 				FA8776562AE648B900323A16 /* UIImageView+Extensions.swift in Sources */,
 				FA87765E2AE648E400323A16 /* Aspects.m in Sources */,
@@ -196,6 +203,7 @@
 				4F77EC441FD822430047D9F1 /* ViewController.swift in Sources */,
 				4F77EC421FD822430047D9F1 /* AppDelegate.swift in Sources */,
 				FA87765A2AE648B900323A16 /* UIImage+Extensions.swift in Sources */,
+				FA95547B2AE8FF53005A54D8 /* UITableView+Extensions.swift in Sources */,
 				FA8776582AE648B900323A16 /* UIButton+Extensions.swift in Sources */,
 				FA9554792AE8FB41005A54D8 /* UIStackView+Extensions.swift in Sources */,
 				FA9554772AE8EABC005A54D8 /* UIPasteboard+Extensions.swift in Sources */,
