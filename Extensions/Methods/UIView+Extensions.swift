@@ -6,6 +6,21 @@
 //  Copyright © 2018 FunctionMaker. All rights reserved.
 //
 
+// MARK: - Scene
+extension Zonable where Base: UIView {
+    /// Get view controller who contains itself by response chain.
+    var scene: UIViewController? {
+        var nextResponder: UIResponder? = base.next
+        while nextResponder != nil {
+            if let result = nextResponder as? UIViewController {
+                return result
+            }
+            nextResponder = nextResponder?.next
+        }
+        return nil
+    }
+}
+
 // MARK: - Menu
 protocol MenuItemEnable {
     var title: String { get }
