@@ -8,11 +8,11 @@ So for recording my growth, for writing less codes, for better tomorrow......
 
 I should create this repository to summary some UI(cocoa Touch) extensions that are likely to be used in our work.
 
-# Usage
+# List
 
-## UIButtom + ImageAlignment
+## UIButton
 
-The code like this:
+- Set image alignment:
 
 ```swift
 button.zon.setImage(image, imageAlignment: .top, spacing: 0, state: .normal)
@@ -25,9 +25,9 @@ Effect just like this:
 ![right margin image](https://github.com/ZeroOnet/Extensions/blob/master/Extensions/Display/rightMargin.png)
 ![top image](https://github.com/ZeroOnet/Extensions/blob/master/Extensions/Display/top.png)
 
-## UIImage + QRCodeImage
+## UIImage
 
-A sample class func:
+- Generate QR code:
 
 ```swift
 QRImageView.image = UIImage.zon.qrImage(content: "我(I) you 🤣", size: CGSize(width: 200, height: 200))
@@ -36,29 +36,61 @@ QRImageView.image = UIImage.zon.qrImage(content: "我(I) you 🤣", size: CGSize
 The QR code image as follows:<br></br>
 ![QR code image](https://github.com/ZeroOnet/Extensions/blob/master/Extensions/Display/QRCode.png)
 
-## UIImageView + SaveImage
+- Rotate image with degree by clockwise.
+- Compose image with color.
+- Tint image with color.
+- Read gif file.
 
-Save image of UIImageView to album by Photos:
+## UIImageView
+
+- Save image of UIImageView to album by Photos:
 
 ```swift
 imageView.zon.saveImage(completion: @escaping (Result<UIImage, Error>) -> Void)
 ```
 
-## UIView + MenuTrigger
+## UIView
 
-We need edit function, we need edit function, we need edit function, so:
+- Edit action:
 
 ```swift
 myLabel.zon.asMenuTrigger([MenuItem(title: "test", action: #selector(testAction))])
 ```
 
-## UIViewController + Duration
+- Get view controller who contains itself by response chain.
+- Shortcuts of frame.
 
-The time interval of browsing view:
+## UIViewController
+
+- The time interval of browsing view:
 
 ```swift
 scene.zon.enableDurationTrack()
 scene.zon.duration
 ```
+
+- Add/Remove child.
+
+## UINavigationController
+
+- Get a visiable navigation controller can push and pop view controller.
+
+## UIPasteboard
+
+- Get/Set sring/image from background queue.
+
+## UIStackView
+
+- Remove all arranged views.
+
+## UITableView
+
+- Reuse
+- Scroll to bottom.
+
+## UICollectionView
+
+- Reuse
+- Scroll to bottom.
 
 <i><b>To be continue...</b></i>
