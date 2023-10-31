@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "4F77EC3D1FD822420047D9F1"
-               BuildableName = "Extensions.app"
-               BlueprintName = "Extensions"
-               ReferencedContainer = "container:Extensions.xcodeproj">
+               BuildableName = "ZExtensions.app"
+               BlueprintName = "ZExtensions"
+               ReferencedContainer = "container:ZExtensions.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -44,9 +44,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4F77EC3D1FD822420047D9F1"
-            BuildableName = "Extensions.app"
-            BlueprintName = "Extensions"
-            ReferencedContainer = "container:Extensions.xcodeproj">
+            BuildableName = "ZExtensions.app"
+            BlueprintName = "ZExtensions"
+            ReferencedContainer = "container:ZExtensions.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -61,9 +61,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4F77EC3D1FD822420047D9F1"
-            BuildableName = "Extensions.app"
-            BlueprintName = "Extensions"
-            ReferencedContainer = "container:Extensions.xcodeproj">
+            BuildableName = "ZExtensions.app"
+            BlueprintName = "ZExtensions"
+            ReferencedContainer = "container:ZExtensions.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
