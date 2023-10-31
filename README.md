@@ -20,10 +20,10 @@ button.zon.setImage(image, imageAlignment: .top, spacing: 0, state: .normal)
 
 Effect just like this:
 
-![bottom image](https://github.com/ZeroOnet/Extensions/blob/master/Extensions/Display/bottom.png)
-![left margin image](https://github.com/ZeroOnet/Extensions/blob/master/Extensions/Display/leftMargin.png)
-![right margin image](https://github.com/ZeroOnet/Extensions/blob/master/Extensions/Display/rightMargin.png)
-![top image](https://github.com/ZeroOnet/Extensions/blob/master/Extensions/Display/top.png)
+![bottom image](https://github.com/ZeroOnet/ZExtensions/blob/master/ZExtensions/Display/bottom.png)
+![left margin image](https://github.com/ZeroOnet/ZExtensions/blob/master/ZExtensions/Display/leftMargin.png)
+![right margin image](https://github.com/ZeroOnet/ZExtensions/blob/master/ZExtensions/Display/rightMargin.png)
+![top image](https://github.com/ZeroOnet/ZExtensions/blob/master/ZExtensions/Display/top.png)
 
 ## UIImage
 
@@ -34,7 +34,7 @@ QRImageView.image = UIImage.zon.qrImage(content: "我(I) you 🤣", size: CGSize
 ```
 
 The QR code image as follows:<br></br>
-![QR code image](https://github.com/ZeroOnet/Extensions/blob/master/Extensions/Display/QRCode.png)
+![QR code image](https://github.com/ZeroOnet/ZExtensions/blob/master/ZExtensions/Display/QRCode.png)
 
 - Rotate image with degree by clockwise.
 - Compose image with color.
@@ -59,6 +59,14 @@ myLabel.zon.asMenuTrigger([MenuItem(title: "test", action: #selector(testAction)
 
 - Get view controller who contains itself by response chain.
 - Shortcuts of frame.
+- Hotspot. Expand or shrink user interaction area with AOP.
+```swift
+let button = UIButton()
+// Expand(negative value) or shrink(positive value) extra hotspot area.
+button.zon.extraArea = .init(top: 10, left:10, bottom: 10, right: 10)
+// Specify minimum positive hotspot size. View will expand its bounds for Hit-Test equally to fit it.
+button.zon.minimumSize = .init(width: 44, height: 44)
+```
 
 ## UIViewController
 

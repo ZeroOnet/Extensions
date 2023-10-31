@@ -124,9 +124,9 @@
 			isa = PBXGroup;
 			children = (
 				FA1C5A0A2AF0E26F00F13100 /* Aspects.h */,
+				FA1C5A0D2AF0E26F00F13100 /* Aspects.m */,
 				FA1C5A0B2AF0E26F00F13100 /* Extensions-Bridging-Header.h */,
 				FA1C5A0C2AF0E26F00F13100 /* Compatible.swift */,
-				FA1C5A0D2AF0E26F00F13100 /* Aspects.m */,
 			);
 			path = Core;
 			sourceTree = "<group>";

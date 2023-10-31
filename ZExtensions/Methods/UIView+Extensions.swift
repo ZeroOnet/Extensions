@@ -6,6 +6,15 @@
 //  Copyright © 2018 FunctionMaker. All rights reserved.
 //
 
+// MARK: - Conform Compatible
+extension UIView {
+    // fix: Cannot assign to property: 'self' is immutable
+    var zon: Zonable<UIView> {
+        get { Zonable(self) }
+        set {} // swiftlint:disable:this unused_setter_value
+    }
+}
+
 // MARK: - Scene
 extension Zonable where Base: UIView {
     /// Get view controller who contains itself by response chain.
@@ -99,6 +108,89 @@ extension Zonable where Base: UIView {
             var frame = base.frame
             frame.origin.x = newValue - frame.size.width
             base.frame = frame
+        }
+    }
+}
+
+// MARK: - Hotspot
+extension Zonable where Base: UIView {
+    /// Specify minimum positive hotspot size. View will expand its bounds for Hit-Test equally to fit it.
+    var minimumSize: CGSize? {
+        get { _getHotspot().minimumSize }
+        set { _getHotspot().minimumSize = newValue }
+    }
+
+    /// Expand(negative value) or shrink(positive value) extra hotspot area.
+    /// View will expand or shrink its bounds for Hit-Test to fit it.
+    var extraArea: UIEdgeInsets? {
+        get { _getHotspot().extraArea }
+        set { _getHotspot().extraArea = newValue }
+    }
+
+    private func _getHotspot() -> UIView._Hotspot {
+        if let existed = base._hotspot { return existed }
+        let new = UIView._Hotspot(view: base)
+        base._hotspot = new
+        return new
+    }
+}
+
+extension UIView {
+    fileprivate var _hotspot: _Hotspot? {
+        get {
+            objc_getAssociatedObject(self, &AssociatedKeys.hotspot) as? _Hotspot
+        }
+        set {
+            objc_setAssociatedObject(self, &AssociatedKeys.hotspot, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        }
+    }
+
+    fileprivate struct AssociatedKeys {
+        static var hotspot: UInt8 = 0
+    }
+
+    fileprivate class _Hotspot {
+        var minimumSize: CGSize?
+        var extraArea: UIEdgeInsets?
+        weak var view: UIView?
+        init(view: UIView) {
+            self.view = view
+
+            let pointInsideBlock: @convention(block)(AspectInfo) -> Void = { [weak self] info in
+                guard
+                    let point = info.arguments().first as? CGPoint,
+                    let bounds = self?.view?.bounds
+                else { return }
+
+                let invocation = info.originalInvocation()
+
+                if let minimumSize = self?.minimumSize {
+                    let size = bounds.size
+                    let expandWidth = size.width - minimumSize.width
+                    let expandHeight = size.height - minimumSize.height
+
+                    var insets: UIEdgeInsets = .zero
+                    if expandWidth < 0 {
+                        insets.top = expandHeight / 2
+                        insets.bottom = insets.top
+                    }
+                    if expandHeight < 0 {
+                        insets.left = expandWidth / 2
+                        insets.right = insets.left
+                    }
+                    var result = bounds.inset(by: insets).contains(point)
+                    invocation?.setReturnValue(&result)
+                } else {
+                    var result = bounds.inset(by: self?.extraArea ?? .zero).contains(point)
+                    invocation?.setReturnValue(&result)
+                }
+            }
+            let viewClass = type(of: view)
+            _ = try? view.aspect_hook(
+                #selector(viewClass.point(inside:with:)),
+                with: .positionInstead,
+                usingBlock: pointInsideBlock
+            )
         }
     }
 }
