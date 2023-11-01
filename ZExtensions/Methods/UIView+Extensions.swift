@@ -116,18 +116,18 @@ extension Zonable where Base: UIView {
 extension Zonable where Base: UIView {
     /// Specify minimum positive hotspot size. View will expand its bounds for Hit-Test equally to fit it.
     var minimumSize: CGSize? {
-        get { _getHotspot().minimumSize }
-        set { _getHotspot().minimumSize = newValue }
+        get { _hotspot.minimumSize }
+        set { _hotspot.minimumSize = newValue }
     }
 
     /// Expand(negative value) or shrink(positive value) extra hotspot area.
     /// View will expand or shrink its bounds for Hit-Test to fit it.
     var extraArea: UIEdgeInsets? {
-        get { _getHotspot().extraArea }
-        set { _getHotspot().extraArea = newValue }
+        get { _hotspot.extraArea }
+        set { _hotspot.extraArea = newValue }
     }
 
-    private func _getHotspot() -> UIView._Hotspot {
+    private var _hotspot: UIView._Hotspot {
         if let existed = base._hotspot { return existed }
         let new = UIView._Hotspot(view: base)
         base._hotspot = new
