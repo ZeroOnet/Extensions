@@ -29,6 +29,7 @@
 		FA1C5A2E2AF0E26F00F13100 /* leftMargin.png in Resources */ = {isa = PBXBuildFile; fileRef = FA1C5A172AF0E26F00F13100 /* leftMargin.png */; };
 		FA1C5A2F2AF0E26F00F13100 /* top.png in Resources */ = {isa = PBXBuildFile; fileRef = FA1C5A182AF0E26F00F13100 /* top.png */; };
 		FA1C5A302AF0E26F00F13100 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1C5A192AF0E26F00F13100 /* AppDelegate.swift */; };
+		FAF878572AF258640098E2E1 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF878562AF258640098E2E1 /* UIColor+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,7 @@
 		FA1C5A182AF0E26F00F13100 /* top.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = top.png; sourceTree = "<group>"; };
 		FA1C5A192AF0E26F00F13100 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FA1C5A1A2AF0E26F00F13100 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FAF878562AF258640098E2E1 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +118,7 @@
 				FA1C5A062AF0E26F00F13100 /* UIStackView+Extensions.swift */,
 				FA1C5A072AF0E26F00F13100 /* UITableView+Extensions.swift */,
 				FA1C5A082AF0E26F00F13100 /* UICollectionView+Extensions.swift */,
+				FAF878562AF258640098E2E1 /* UIColor+Extensions.swift */,
 			);
 			path = Methods;
 			sourceTree = "<group>";
@@ -223,6 +226,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA1C5A232AF0E26F00F13100 /* UIStackView+Extensions.swift in Sources */,
+				FAF878572AF258640098E2E1 /* UIColor+Extensions.swift in Sources */,
 				FA1C5A272AF0E26F00F13100 /* Aspects.m in Sources */,
 				FA1C5A1C2AF0E26F00F13100 /* UIImageView+Extensions.swift in Sources */,
 				FA1C5A1E2AF0E26F00F13100 /* UIButton+Extensions.swift in Sources */,

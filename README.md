@@ -101,4 +101,8 @@ scene.zon.duration
 - Reuse
 - Scroll to bottom.
 
+## UIColor
+
+- Init color with hex string like: prefix -> #/0x, suffix -> RGB/RGBA/RRGGBB/RRGGBBAA.
+
 <i><b>To be continue...</b></i>
