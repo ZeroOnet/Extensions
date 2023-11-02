@@ -90,6 +90,7 @@ scene.zon.duration
 ## UIStackView
 
 - Remove all arranged views.
+- Set layout padding and background color.
 
 ## UITableView
 
