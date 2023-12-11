@@ -145,10 +145,6 @@ extension UIView {
         }
     }
 
-    fileprivate struct AssociatedKeys {
-        static var hotspot: UInt8 = 0
-    }
-
     fileprivate class _Hotspot {
         var minimumSize: CGSize?
         var extraArea: UIEdgeInsets?
@@ -192,5 +188,81 @@ extension UIView {
                 usingBlock: pointInsideBlock
             )
         }
+    }
+}
+
+protocol GradationSettable: AnyObject {
+    var locations: [CGFloat] { get set }
+    var colors: [UIColor] { get set }
+    var startPoint: CGPoint { get set }
+    var endPoint: CGPoint { get set }
+}
+
+// MARK: - Gradient Layer
+extension Zonable where Base: UIView {
+    var gradientLayer: GradationSettable? {
+        get {
+            if let existed = objc_getAssociatedObject(
+                base,
+                &UIView.AssociatedKeys.gradientLayer
+            ) as? GradationSettable { return existed }
+            let new = UIView._Gradation(view: base)
+            objc_setAssociatedObject(
+                base,
+                &UIView.AssociatedKeys.gradientLayer,
+                new,
+                .OBJC_ASSOCIATION_RETAIN_NONATOMIC
+            )
+            return new
+        }
+        set {
+            objc_setAssociatedObject(
+                base,
+                &UIView.AssociatedKeys.gradientLayer,
+                newValue,
+                .OBJC_ASSOCIATION_RETAIN_NONATOMIC
+            )
+        }
+    }
+}
+
+extension UIView {
+    fileprivate class _Gradation: GradationSettable {
+        weak var view: UIView?
+        let layer = CAGradientLayer()
+        init(view: UIView) {
+            self.view = view
+            view.layer.addSublayer(layer)
+            layer.frame = view.bounds
+
+            let layoutSubviewsBlock: @convention(block)(AspectInfo) -> Void = { [weak self] _ in
+                self?.layer.frame = self?.view?.bounds ?? .zero
+            }
+            let viewClass = type(of: view)
+            _ = try? view.aspect_hook(
+                #selector(viewClass.layoutSubviews),
+                usingBlock: layoutSubviewsBlock
+            )
+        }
+
+        var locations: [CGFloat] = [] {
+            didSet { layer.locations = locations.map { $0 as NSNumber } }
+        }
+        var colors: [UIColor] = [] {
+            didSet { layer.colors = colors.compactMap { $0.cgColor } }
+        }
+        var startPoint: CGPoint = .zero {
+            didSet { layer.startPoint = startPoint }
+        }
+        var endPoint: CGPoint = .zero {
+            didSet { layer.endPoint = endPoint }
+        }
+    }
+}
+
+extension UIView {
+    fileprivate struct AssociatedKeys {
+        static var hotspot: UInt8 = 0
+        static var gradientLayer: UInt8 = 0
     }
 }

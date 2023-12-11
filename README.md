@@ -67,6 +67,18 @@ button.zon.extraArea = .init(top: 10, left:10, bottom: 10, right: 10)
 // Specify minimum positive hotspot size. View will expand its bounds for Hit-Test equally to fit it.
 button.zon.minimumSize = .init(width: 44, height: 44)
 ```
+- Add gradient layer:
+```swift
+let view = UIView()
+let layer = view.zon.gradientLayer // GradationSettable, view will add sublayer automatically.
+
+protocol GradationSettable: AnyObject {
+    var locations: [CGFloat] { get set }
+    var colors: [UIColor] { get set }
+    var startPoint: CGPoint { get set }
+    var endPoint: CGPoint { get set }
+}
+```
 
 ## UIViewController
 
