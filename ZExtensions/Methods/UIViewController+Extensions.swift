@@ -53,65 +53,67 @@ extension Zonable where Base: UIViewController {
     }
 }
 
-private class _DurationTracker {
-    var duration: Double = 0
-    var startDate: Date?
-    var endDate: Date? {
-        didSet {
-            guard let startDate, let endDate else { return }
-            let timeInterval = endDate.timeIntervalSince(startDate)
-            if timeInterval > 0 {
-                self.startDate = self.endDate
-                duration += timeInterval
-            }
+extension UIViewController {
+    fileprivate var __zon_tracker: __Zon_DurationTracker? {
+        get {
+            objc_getAssociatedObject(self, &AssociatedKeys.tracker) as? __Zon_DurationTracker
+        }
+
+        set {
+            objc_setAssociatedObject(self, &AssociatedKeys.tracker, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
     }
-    init(scene: UIViewController) {
-        // ISA Swizzling with `Aspects`
-        let viewWillAppearBlock: @convention(block)() -> Void = { [weak self] in
-            self?.startDate = Date()
 
-            // notification active & inactive
-            let center = NotificationCenter.default
-            center.addObserver(
-                forName: UIApplication.willResignActiveNotification,
-                object: nil,
-                queue: nil
-            ) { [weak self] _ in
-                self?.endDate = Date()
+    fileprivate class __Zon_DurationTracker {
+        var duration: Double = 0
+        var startDate: Date?
+        var endDate: Date? {
+            didSet {
+                guard let startDate, let endDate else { return }
+                let timeInterval = endDate.timeIntervalSince(startDate)
+                if timeInterval > 0 {
+                    self.startDate = self.endDate
+                    duration += timeInterval
+                }
             }
-            center.addObserver(
-                forName: UIApplication.didBecomeActiveNotification,
-                object: nil,
-                queue: nil
-            ) { [weak self] _ in
+        }
+        init(scene: UIViewController) {
+            // ISA Swizzling with `Aspects`
+            let viewWillAppearBlock: @convention(block)() -> Void = { [weak self] in
                 self?.startDate = Date()
+
+                // notification active & inactive
+                let center = NotificationCenter.default
+                center.addObserver(
+                    forName: UIApplication.willResignActiveNotification,
+                    object: nil,
+                    queue: nil
+                ) { [weak self] _ in
+                    self?.endDate = Date()
+                }
+                center.addObserver(
+                    forName: UIApplication.didBecomeActiveNotification,
+                    object: nil,
+                    queue: nil
+                ) { [weak self] _ in
+                    self?.startDate = Date()
+                }
             }
+            let viewWillDisappearBlock: @convention(block)() -> Void = { [weak self] in
+                guard let self else { return }
+                self.endDate = Date()
+                // swiftlint:disable:next notification_center_detachment
+                NotificationCenter.default.removeObserver(self)
+            }
+            let type = type(of: scene)
+            _ = try? scene.aspect_hook(#selector(type.viewWillAppear(_:)), usingBlock: viewWillAppearBlock)
+            _ = try? scene.aspect_hook(#selector(type.viewWillDisappear(_:)), usingBlock: viewWillDisappearBlock)
         }
-        let viewWillDisappearBlock: @convention(block)() -> Void = { [weak self] in
-            guard let self else { return }
-            self.endDate = Date()
-            // swiftlint:disable:next notification_center_detachment
-            NotificationCenter.default.removeObserver(self)
-        }
-        let type = type(of: scene)
-        _ = try? scene.aspect_hook(#selector(type.viewWillAppear(_:)), usingBlock: viewWillAppearBlock)
-        _ = try? scene.aspect_hook(#selector(type.viewWillDisappear(_:)), usingBlock: viewWillDisappearBlock)
     }
 }
 
 extension UIViewController {
     fileprivate struct AssociatedKeys {
         static var tracker: UInt8 = 0
-    }
-
-    fileprivate var __zon_tracker: _DurationTracker? {
-        get {
-            objc_getAssociatedObject(self, &AssociatedKeys.tracker) as? _DurationTracker
-        }
-
-        set {
-            objc_setAssociatedObject(self, &AssociatedKeys.tracker, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
-        }
     }
 }

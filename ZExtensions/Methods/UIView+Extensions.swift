@@ -127,25 +127,25 @@ extension Zonable where Base: UIView {
         set { _hotspot.extraArea = newValue }
     }
 
-    private var _hotspot: UIView._Hotspot {
-        if let existed = base._hotspot { return existed }
-        let new = UIView._Hotspot(view: base)
-        base._hotspot = new
+    private var _hotspot: UIView.__Zon_Hotspot {
+        if let existed = base.__zon_hotspot { return existed }
+        let new = UIView.__Zon_Hotspot(view: base)
+        base.__zon_hotspot = new
         return new
     }
 }
 
 extension UIView {
-    fileprivate var _hotspot: _Hotspot? {
+    fileprivate var __zon_hotspot: __Zon_Hotspot? {
         get {
-            objc_getAssociatedObject(self, &AssociatedKeys.hotspot) as? _Hotspot
+            objc_getAssociatedObject(self, &AssociatedKeys.hotspot) as? __Zon_Hotspot
         }
         set {
             objc_setAssociatedObject(self, &AssociatedKeys.hotspot, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
     }
 
-    fileprivate class _Hotspot {
+    fileprivate class __Zon_Hotspot {
         var minimumSize: CGSize?
         var extraArea: UIEdgeInsets?
         weak var view: UIView?
@@ -206,7 +206,7 @@ extension Zonable where Base: UIView {
                 base,
                 &UIView.AssociatedKeys.gradientLayer
             ) as? GradationSettable { return existed }
-            let new = UIView._Gradation(view: base)
+            let new = UIView.__Zon_Gradation(view: base)
             objc_setAssociatedObject(
                 base,
                 &UIView.AssociatedKeys.gradientLayer,
@@ -227,7 +227,7 @@ extension Zonable where Base: UIView {
 }
 
 extension UIView {
-    fileprivate class _Gradation: GradationSettable {
+    fileprivate class __Zon_Gradation: GradationSettable {
         weak var view: UIView?
         let layer = CAGradientLayer()
         init(view: UIView) {
