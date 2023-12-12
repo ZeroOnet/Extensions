@@ -80,6 +80,11 @@ protocol GradationSettable: AnyObject {
 }
 ```
 
+- Make view highlighted like UIButton when you click:
+```swift
+view.zon.isHighlightEnabled = true
+```
+
 ## UIViewController
 
 - The time interval of browsing view:

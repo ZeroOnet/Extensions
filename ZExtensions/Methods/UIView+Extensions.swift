@@ -15,6 +15,73 @@ extension UIView {
     }
 }
 
+// MARK: - Highlighted
+extension Zonable where Base: UIView {
+    /// Make view highlighted like UIButton when you click.
+    var isHighlightEnabled: Bool {
+        get {
+            base.gestureRecognizers?.contains(where: { $0 is __Zon_GR }) == true
+        }
+        set {
+            if !newValue {
+                base.gestureRecognizers?.removeAll(where: { $0 is __Zon_GR })
+            } else {
+                guard !isHighlightEnabled else { return }
+                var modified = false
+                if !base.isUserInteractionEnabled {
+                    base.isUserInteractionEnabled = true
+                    modified = true
+                }
+                base.addGestureRecognizer(__Zon_GR(modified: modified))
+            }
+        }
+    }
+
+    fileprivate class __Zon_GR: UIGestureRecognizer, UIGestureRecognizerDelegate {
+        var stashed: CGFloat = 1
+        let modified: Bool
+        init(modified: Bool) {
+            self.modified = modified
+            super.init(target: nil, action: nil)
+            delegate = self
+            delaysTouchesEnded = false
+        }
+
+        deinit { if modified { view?.isUserInteractionEnabled = false } }
+
+        override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent) {
+            super.touchesBegan(touches, with: event)
+            _doIfNeeded { stashed = $0.alpha; $0.alpha = stashed * 0.5 }
+        }
+
+        override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent) {
+            super.touchesCancelled(touches, with: event)
+            _recover()
+        }
+
+        override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent) {
+            super.touchesEnded(touches, with: event)
+            _recover()
+        }
+
+        func gestureRecognizer(
+            _ gestureRecognizer: UIGestureRecognizer,
+            shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer
+        ) -> Bool {
+            true
+        }
+
+        private func _doIfNeeded(_ work: (UIView) -> Void) {
+            guard let view else { return }
+            work(view)
+        }
+
+        private func _recover() {
+            _doIfNeeded { $0.alpha = stashed; stashed = 1 }
+        }
+    }
+}
+
 // MARK: - Scene
 extension Zonable where Base: UIView {
     /// Get view controller who contains itself by response chain.
@@ -206,7 +273,7 @@ extension Zonable where Base: UIView {
                 base,
                 &UIView.AssociatedKeys.gradientLayer
             ) as? GradationSettable { return existed }
-            let new = UIView.__Zon_Gradation(view: base)
+            let new = __Zon_Gradation(view: base)
             objc_setAssociatedObject(
                 base,
                 &UIView.AssociatedKeys.gradientLayer,
@@ -224,9 +291,7 @@ extension Zonable where Base: UIView {
             )
         }
     }
-}
 
-extension UIView {
     fileprivate class __Zon_Gradation: GradationSettable {
         weak var view: UIView?
         let layer = CAGradientLayer()
@@ -259,7 +324,6 @@ extension UIView {
         }
     }
 }
-
 extension UIView {
     fileprivate struct AssociatedKeys {
         static var hotspot: UInt8 = 0
