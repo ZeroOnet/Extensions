@@ -6,15 +6,6 @@
 //  Copyright © 2018 FunctionMaker. All rights reserved.
 //
 
-// MARK: - Conform Compatible
-extension UIView {
-    // fix: Cannot assign to property: 'self' is immutable
-    var zon: Zonable<UIView> {
-        get { Zonable(self) }
-        set {} // swiftlint:disable:this unused_setter_value
-    }
-}
-
 // MARK: - Highlighted
 extension Zonable where Base: UIView {
     /// Make view highlighted like UIButton when you click.

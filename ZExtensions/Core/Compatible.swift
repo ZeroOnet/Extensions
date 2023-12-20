@@ -26,7 +26,7 @@ extension Compatible {
 }
 
 struct Zonable<Base> {
-    let base: Base
+    var base: Base
     init(_ base: Base) {
         self.base = base
     }
