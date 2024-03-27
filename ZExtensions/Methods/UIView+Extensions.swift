@@ -6,51 +6,113 @@
 //  Copyright © 2018 FunctionMaker. All rights reserved.
 //
 
-// MARK: - TouchUpInside Action
-extension Zonable where Base: UIView {
-    /// Add touchUpInside event action like UIButton.
-    @discardableResult
-    func onTouchUpInside(_ action: @escaping () -> Void) -> UIGestureRecognizer {
-        base.isUserInteractionEnabled = true
-        let result = __Zon_TouchUpInsideGR { _ in action() }
-        base.addGestureRecognizer(result)
-        return result
+protocol MovingCancellable {
+    func shouldCancel(in view: UIView, began: CGPoint, moved: CGPoint) -> Bool
+}
+
+struct OutOfBoundsCanceller: MovingCancellable {
+    func shouldCancel(in view: UIView, began: CGPoint, moved: CGPoint) -> Bool {
+        !view.bounds.contains(moved)
     }
 }
 
-// MARK: - Highlighted
+struct OutOfValueCanceller: MovingCancellable {
+    let value: CGFloat
+
+    func shouldCancel(in view: UIView, began: CGPoint, moved: CGPoint) -> Bool {
+        abs(moved.x - began.x) > value || abs(moved.y - began.y) > value
+    }
+}
+
+protocol Removable {
+    var isRemoved: Bool { get }
+
+    func remove()
+}
+
+// MARK: - TouchUpInside Action
 extension Zonable where Base: UIView {
-    /// Make view highlighted like UIButton when you click.
-    var isHighlightEnabled: Bool {
-        get {
-            base.gestureRecognizers?.contains(where: { $0 is __Zon_TouchUpInsideGR }) == true
+    /// Add touchUpInside event action like UIButton with highlighted status.
+    ///
+    /// - Parameters:
+    ///   - canceller: cancel touch up inside event when touches moved. New value will override old value.
+    ///   - action: touchUpInside event handler.
+    /// - Returns: A removable token to remove event handler.
+    @discardableResult
+    func onTouchUpInside(
+        canceller: MovingCancellable = OutOfBoundsCanceller(),
+        _ action: (() -> Void)?
+    ) -> Removable {
+        var modified: Bool = false
+        if !base.isUserInteractionEnabled {
+            base.isUserInteractionEnabled = true
+            modified = true
         }
-        set {
-            if !newValue {
-                base.gestureRecognizers?.removeAll(where: { $0 is __Zon_TouchUpInsideGR })
-            } else {
-                guard !isHighlightEnabled else { return }
-                base.isUserInteractionEnabled = true
-                let gesture = __Zon_TouchUpInsideGR {
-                    guard let view = $0.view else { return }
-                    view.alpha *= 2
-                }
-                gesture.onCancelled = gesture.onAction
-                gesture.onBegan = {
-                    guard let view = $0.view else { return }
-                    view.alpha *= 0.5
-                }
-                base.addGestureRecognizer(gesture)
+
+        let gesture = base.gestureRecognizers?.first(
+            where: { $0 is __Z_TouchUpInsideGR }
+        ) as? __Z_TouchUpInsideGR ?? {
+            let value = __Z_TouchUpInsideGR(canceller: canceller)
+            value.onBegan = {
+                guard let view = $0.view else { return }
+                view.alpha *= 0.5
+            }
+            value.onCancelled = {
+                guard let view = $0.view else { return }
+                view.alpha *= 2
+            }
+
+            // Add default highlighted status.
+            let highlightAction = _Action(handler: value.onCancelled)
+            value.append(action: highlightAction)
+            base.addGestureRecognizer(value)
+            return value
+        }()
+        gesture.canceller = canceller
+        let action = _Action { _ in action?() }
+        gesture.append(action: action)
+        return _Remover { [weak base, weak gesture] in
+            gesture?.remove(action: action)
+
+            // Destory gesture if user added actions removed.
+            if let gesture, gesture.actions.count == 1 {
+                base?.isUserInteractionEnabled = !modified
+                base?.removeGestureRecognizer(gesture)
             }
         }
     }
 
-    final class __Zon_TouchUpInsideGR: UIGestureRecognizer, UIGestureRecognizerDelegate {
-        var onBegan: ((__Zon_TouchUpInsideGR) -> Void)?
-        var onCancelled: ((__Zon_TouchUpInsideGR) -> Void)?
-        let onAction: (__Zon_TouchUpInsideGR) -> Void
-        init(onAction: @escaping (__Zon_TouchUpInsideGR) -> Void) {
-            self.onAction = onAction
+    private final class _Remover: Removable {
+        let handler: () -> Void
+        init(handler: @escaping () -> Void) {
+            self.handler = handler
+        }
+
+        var isRemoved = false
+
+        func remove() {
+            guard !isRemoved else { return }
+            isRemoved = true
+            handler()
+        }
+    }
+
+    private typealias _Handler = (__Z_TouchUpInsideGR) -> Void
+
+    private struct _Action: Equatable {
+        static func == (lhs: _Action, rhs: _Action) -> Bool { lhs.id == rhs.id }
+
+        let id = UUID().uuidString
+        let handler: _Handler?
+    }
+
+    private final class __Z_TouchUpInsideGR: UIGestureRecognizer, UIGestureRecognizerDelegate {
+        var onBegan: _Handler?
+        var onCancelled: _Handler?
+        var canceller: MovingCancellable
+        private(set) var actions: [_Action] = []
+        init(canceller: MovingCancellable) {
+            self.canceller = canceller
             super.init(target: nil, action: nil)
             delegate = self
             cancelsTouchesInView = false
@@ -59,14 +121,18 @@ extension Zonable where Base: UIView {
 
         override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent) {
             super.touchesBegan(touches, with: event)
+            _start = touches.first?.location(in: view) ?? .zero
             state = .began
         }
 
         override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent) {
             super.touchesMoved(touches, with: event)
-            let bounds = view?.bounds ?? .zero
-            let point = touches.first?.location(in: view) ?? .zero
-            if !bounds.contains(point) { state = .cancelled }
+            guard let view = view, let point = touches.first?.location(in: view) else { return }
+            if canceller.shouldCancel(
+                in: view,
+                began: _start,
+                moved: point
+            ) { state = .cancelled }
         }
 
         override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent) {
@@ -84,16 +150,27 @@ extension Zonable where Base: UIView {
             shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer
         ) -> Bool { true }
 
+        func append(action: _Action) {
+            actions.append(action)
+        }
+
+        func remove(action: _Action) {
+            guard let idx = actions.firstIndex(where: { $0 == action }) else { return }
+            actions.remove(at: idx)
+        }
+
         @objc
         private func _action(sender: UIGestureRecognizer) {
             switch sender.state {
             case .began: onBegan?(self)
             case .possible, .changed: break
             case .cancelled, .failed: onCancelled?(self)
-            case .ended: onAction(self)
+            case .ended: actions.forEach { $0.handler?(self) }
             @unknown default: break
             }
         }
+
+        private var _start: CGPoint = .zero
     }
 }
 

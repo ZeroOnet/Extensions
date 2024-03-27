@@ -80,13 +80,9 @@ protocol GradationSettable: AnyObject {
 }
 ```
 
-- Make view highlighted like UIButton when you click:
+- Add touchUpInside event action like UIButton with highlighted status:
 ```swift
-view.zon.isHighlightEnabled = true
-```
-- Add touchUpInside event action like UIButton:
-```swift
-view.zon.onTouchUpInside {
+view.zon.onTouchUpInside(canceller: OutOfBoundsCanceller()) {
     // do something.
 }
 ```
