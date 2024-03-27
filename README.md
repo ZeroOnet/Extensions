@@ -84,6 +84,12 @@ protocol GradationSettable: AnyObject {
 ```swift
 view.zon.isHighlightEnabled = true
 ```
+- Add touchUpInside event action like UIButton:
+```swift
+view.zon.onTouchUpInside {
+    // do something.
+}
+```
 
 ## UIViewController
 

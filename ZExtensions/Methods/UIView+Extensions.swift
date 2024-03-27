@@ -6,69 +6,93 @@
 //  Copyright © 2018 FunctionMaker. All rights reserved.
 //
 
+// MARK: - TouchUpInside Action
+extension Zonable where Base: UIView {
+    /// Add touchUpInside event action like UIButton.
+    @discardableResult
+    func onTouchUpInside(_ action: @escaping () -> Void) -> UIGestureRecognizer {
+        base.isUserInteractionEnabled = true
+        let result = __Zon_TouchUpInsideGR { _ in action() }
+        base.addGestureRecognizer(result)
+        return result
+    }
+}
+
 // MARK: - Highlighted
 extension Zonable where Base: UIView {
     /// Make view highlighted like UIButton when you click.
     var isHighlightEnabled: Bool {
         get {
-            base.gestureRecognizers?.contains(where: { $0 is __Zon_GR }) == true
+            base.gestureRecognizers?.contains(where: { $0 is __Zon_TouchUpInsideGR }) == true
         }
         set {
             if !newValue {
-                base.gestureRecognizers?.removeAll(where: { $0 is __Zon_GR })
+                base.gestureRecognizers?.removeAll(where: { $0 is __Zon_TouchUpInsideGR })
             } else {
                 guard !isHighlightEnabled else { return }
-                var modified = false
-                if !base.isUserInteractionEnabled {
-                    base.isUserInteractionEnabled = true
-                    modified = true
+                base.isUserInteractionEnabled = true
+                let gesture = __Zon_TouchUpInsideGR {
+                    guard let view = $0.view else { return }
+                    view.alpha *= 2
                 }
-                base.addGestureRecognizer(__Zon_GR(modified: modified))
+                gesture.onCancelled = gesture.onAction
+                gesture.onBegan = {
+                    guard let view = $0.view else { return }
+                    view.alpha *= 0.5
+                }
+                base.addGestureRecognizer(gesture)
             }
         }
     }
 
-    fileprivate class __Zon_GR: UIGestureRecognizer, UIGestureRecognizerDelegate {
-        var stashed: CGFloat = 1
-        let modified: Bool
-        init(modified: Bool) {
-            self.modified = modified
+    final class __Zon_TouchUpInsideGR: UIGestureRecognizer, UIGestureRecognizerDelegate {
+        var onBegan: ((__Zon_TouchUpInsideGR) -> Void)?
+        var onCancelled: ((__Zon_TouchUpInsideGR) -> Void)?
+        let onAction: (__Zon_TouchUpInsideGR) -> Void
+        init(onAction: @escaping (__Zon_TouchUpInsideGR) -> Void) {
+            self.onAction = onAction
             super.init(target: nil, action: nil)
             delegate = self
-            delaysTouchesEnded = false
+            cancelsTouchesInView = false
+            addTarget(self, action: #selector(_action))
         }
-
-        deinit { if modified { view?.isUserInteractionEnabled = false } }
 
         override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent) {
             super.touchesBegan(touches, with: event)
-            _doIfNeeded { stashed = $0.alpha; $0.alpha = stashed * 0.5 }
+            state = .began
+        }
+
+        override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent) {
+            super.touchesMoved(touches, with: event)
+            let bounds = view?.bounds ?? .zero
+            let point = touches.first?.location(in: view) ?? .zero
+            if !bounds.contains(point) { state = .cancelled }
         }
 
         override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent) {
             super.touchesCancelled(touches, with: event)
-            _recover()
+            state = .cancelled
         }
 
         override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent) {
             super.touchesEnded(touches, with: event)
-            _recover()
+            state = .ended
         }
 
         func gestureRecognizer(
             _ gestureRecognizer: UIGestureRecognizer,
             shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer
-        ) -> Bool {
-            true
-        }
+        ) -> Bool { true }
 
-        private func _doIfNeeded(_ work: (UIView) -> Void) {
-            guard let view else { return }
-            work(view)
-        }
-
-        private func _recover() {
-            _doIfNeeded { $0.alpha = stashed; stashed = 1 }
+        @objc
+        private func _action(sender: UIGestureRecognizer) {
+            switch sender.state {
+            case .began: onBegan?(self)
+            case .possible, .changed: break
+            case .cancelled, .failed: onCancelled?(self)
+            case .ended: onAction(self)
+            @unknown default: break
+            }
         }
     }
 }
