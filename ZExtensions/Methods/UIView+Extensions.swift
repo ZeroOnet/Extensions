@@ -40,9 +40,9 @@ extension Zonable where Base: UIView {
     /// - Returns: A removable token to remove event handler.
     @discardableResult
     func onTouchUpInside(
-        canceller: MovingCancellable = OutOfBoundsCanceller(),
+        canceller: some MovingCancellable = OutOfBoundsCanceller(),
         _ action: (() -> Void)?
-    ) -> Removable {
+    ) -> some Removable {
         var modified: Bool = false
         if !base.isUserInteractionEnabled {
             base.isUserInteractionEnabled = true
@@ -111,7 +111,7 @@ extension Zonable where Base: UIView {
         var onCancelled: _Handler?
         var canceller: MovingCancellable
         private(set) var actions: [_Action] = []
-        init(canceller: MovingCancellable) {
+        init(canceller: some MovingCancellable) {
             self.canceller = canceller
             super.init(target: nil, action: nil)
             delegate = self
